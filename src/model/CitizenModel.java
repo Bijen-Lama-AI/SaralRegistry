@@ -1,19 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 /**
- *
+ * Represents a citizen's voting registration details.
+ * Optional field can be set later if needed.
  * @author bijen
  */
 
-public class Citizen {
+public class CitizenModel {
     
+    // Required Fields
     private String phoneNumber;
     private String citizenshipNumber;
-    private String nationalIdentityNumber; // optional
     private String voterName;
     private String gender;
     private int age;
@@ -22,19 +19,10 @@ public class Citizen {
     private String municipality;
     private int wardNumber;
     private String voteCenter;
-    private String status; // pending, approved, optional
-    private String motherName; // optional
-    private String fatherName; // optional
-    private String spouseName; // optioanl
-    private String email; // optional
-    
-    public Citizen(String phoneNumber, String citizenshipNumber, String nationalIdentityNumber, 
-            String voterName, String gender, int age, String province,
-            String district, String municipality, int wardNumber, String voteCenter) {
-        
+
+    public CitizenModel(String phoneNumber, String citizenshipNumber, String voterName, String gender, int age, String province, String district, String municipality, int wardNumber, String voteCenter) {
         this.phoneNumber = phoneNumber;
         this.citizenshipNumber = citizenshipNumber;
-        this.nationalIdentityNumber = nationalIdentityNumber; // can be null
         this.voterName = voterName;
         this.gender = gender;
         this.age = age;
@@ -43,13 +31,6 @@ public class Citizen {
         this.municipality = municipality;
         this.wardNumber = wardNumber;
         this.voteCenter = voteCenter;
-        
-        this.status = "PENDING"; // default
-        
-        this.motherName = null;
-        this.fatherName = null;
-        this.spouseName = null;
-        this.email = null;
     }
 
     public String getPhoneNumber() {
@@ -66,14 +47,6 @@ public class Citizen {
 
     public void setCitizenshipNumber(String citizenshipNumber) {
         this.citizenshipNumber = citizenshipNumber;
-    }
-
-    public String getNationalIdentityNumber() {
-        return nationalIdentityNumber;
-    }
-
-    public void setNationalIdentityNumber(String nationalIdentityNumber) {
-        this.nationalIdentityNumber = nationalIdentityNumber;
     }
 
     public String getVoterName() {
@@ -97,6 +70,9 @@ public class Citizen {
     }
 
     public void setAge(int age) {
+        if (age < 18) {
+            throw new IllegalArgumentException("Age must be 18 or older to register.");
+        }
         this.age = age;
     }
 
@@ -138,49 +114,5 @@ public class Citizen {
 
     public void setVoteCenter(String voteCenter) {
         this.voteCenter = voteCenter;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        if (status.equals("PENDING") || status.equals("APPROVED") || status.equals("REJECTED")) {
-            this.status = status;
-        } else {
-            throw new IllegalArgumentException("Invalid Status");
-        }
-    }
-
-    public String getMotherName() {
-        return motherName;
-    }
-
-    public void setMotherName(String motherName) {
-        this.motherName = motherName;
-    }
-
-    public String getFatherName() {
-        return fatherName;
-    }
-
-    public void setFatherName(String fatherName) {
-        this.fatherName = fatherName;
-    }
-
-    public String getSpouseName() {
-        return spouseName;
-    }
-
-    public void setSpouseName(String spouseName) {
-        this.spouseName = spouseName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    }   
 }
