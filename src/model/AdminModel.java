@@ -7,28 +7,21 @@ package model;
  * @author bijen
  */
 public class AdminModel {
-    private String adminId;
+    
+    private final String adminId;
     private String adminPassword;
     
     public AdminModel(String adminId, String adminPassword) {
+        if (adminId == null || adminPassword == null) {
+            throw new IllegalArgumentException("Admin credentials cannot be null");
+        }
+        
         this.adminId = adminId;
         this.adminPassword = adminPassword;
     }
 
     public String getAdminId() {
         return adminId;
-    }
-
-    public void setAdminId(String adminId) {
-        this.adminId = adminId;
-    }
-
-    public String getAdminPassword() {
-        return adminPassword;
-    }
-
-    public void setAdminPassword(String adminPassword) {
-        this.adminPassword = adminPassword;
     }
     
     /**
@@ -42,5 +35,12 @@ public class AdminModel {
             return false;
         }
         return adminId.equals(inputId) && adminPassword.equals(inputPassword);
+    }
+    
+    public void changePassword(String oldPassword, String newPassword) {
+        if (!adminPassword.equals(oldPassword)) {
+            throw new SecurityException("Invalid current password.");
+        }
+        this.adminPassword = newPassword;
     }
 }
