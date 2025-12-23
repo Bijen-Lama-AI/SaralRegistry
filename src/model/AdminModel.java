@@ -1,23 +1,37 @@
-
 package model;
 
 /**
- *Represents an admin user in the system.
- *Includes basic authentication methods.
+ * Represents an admin user in the system.
+ * Includes basic authentication and password management.
  * @author bijen
  */
 public class AdminModel {
     
+    // Admin ID is constant once created.
     private final String adminId;
+    
+    // Admin password can be changed.
     private String adminPassword;
     
+    /**
+     * Constructor for AdminModel.
+     * Ensures that ID and password are not null or empty.
+     * 
+     * @param adminId Amin ID (unique)
+     * @param adminPassword Initial password
+     * @throws IllegalArgumentException if ID or password is null/empty
+     */
     public AdminModel(String adminId, String adminPassword) {
-        if (adminId == null || adminPassword == null) {
-            throw new IllegalArgumentException("Admin credentials cannot be null");
+        if (adminId == null || adminId.trim().isEmpty()) {
+            throw new IllegalArgumentException("Admin ID cannot be null or empty");
         }
         
-        this.adminId = adminId;
-        this.adminPassword = adminPassword;
+        if (adminPassword == null || adminPassword.trim().isEmpty()) {
+            throw new IllegalArgumentException("Admin password cannot be null or empty");
+        }
+
+        this.adminId = adminId.trim();
+        this.adminPassword = adminPassword.trim();
     }
 
     public String getAdminId() {
@@ -34,13 +48,26 @@ public class AdminModel {
         if (inputId == null || inputPassword == null) {
             return false;
         }
-        return adminId.equals(inputId) && adminPassword.equals(inputPassword);
+        return adminId.equals(inputId.trim()) && adminPassword.equals(inputPassword.trim());
     }
     
+    /**
+     * Changes the admin password
+     * @param oldPassword Current password
+     * @param newPassword New password to set
+     * @throws IllegalArgumentException if new password is null, empty or too short
+     */
     public void changePassword(String oldPassword, String newPassword) {
-        if (!adminPassword.equals(oldPassword)) {
+        if (oldPassword == null || !adminPassword.equals(oldPassword.trim())) {
             throw new SecurityException("Invalid current password.");
         }
-        this.adminPassword = newPassword;
+        if (newPassword == null || newPassword.trim().isEmpty()) {
+            throw new IllegalArgumentException("New password cannot be empty.");
+        } 
+        if (newPassword.trim().length() < 8) {
+            throw new IllegalArgumentException("New password must be at least 8 characters long.");
+        }
+        
+        this.adminPassword = newPassword.trim();
     }
 }
