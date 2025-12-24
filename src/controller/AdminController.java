@@ -9,7 +9,7 @@ import model.AdminRegistryModel;
 import model.CitizenModel;
 import model.CitizenModel.RegistrationStatus;
 import model.CitizenRegistryModel;
-import view.WelcomePanelView;
+import view.MainFrame;
 
 /**
  * Controller for admin actions: login, password change, approve/reject citizens. 
@@ -19,7 +19,7 @@ public class AdminController {
     
     private AdminRegistryModel adminRegistry;
     private CitizenRegistryModel registry;
-    private WelcomePanelView view;
+    private MainFrame view;
     
     // To track if admin is logged in
     private boolean loggedIn;
@@ -31,7 +31,7 @@ public class AdminController {
      * @param registry
      * @param view 
      */
-    public AdminController(AdminRegistryModel adminRegistry, CitizenRegistryModel registry, WelcomePanelView view) {
+    public AdminController(AdminRegistryModel adminRegistry, CitizenRegistryModel registry, MainFrame view) {
         this.adminRegistry = adminRegistry;
         this.registry = registry;
         this.view = view;
@@ -83,7 +83,7 @@ public class AdminController {
         }
         
         citizen.setStatus(RegistrationStatus.APPROVED);
-        view.updateTable(registry.getAllCitizens());
+        //view.updateTable(registry.getAllCitizens());
     }
     
     /**

@@ -8,7 +8,7 @@ import model.CitizenModel;
 import model.CitizenModel.Gender;
 import model.CitizenModel.RegistrationStatus;
 import model.CitizenRegistryModel;
-import view.WelcomePanelView;
+import view.MainFrame;
 import java.time.LocalDate;
 /**
  * Controller for handling citizen operation between model and view.
@@ -18,9 +18,9 @@ import java.time.LocalDate;
 public class CitizenController {
     
     private CitizenRegistryModel registry;
-    private WelcomePanelView view;
+    private MainFrame view;
 
-    public CitizenController(CitizenRegistryModel registry, WelcomePanelView view) {
+    public CitizenController(CitizenRegistryModel registry, MainFrame view) {
         this.registry = registry;
         this.view = view;
         
@@ -33,14 +33,10 @@ public class CitizenController {
      * Adds a new citizen from UI input.
      */
     private void loadInitialCitizenData() {
-        registry.addCitizen(new CitizenModel("27145123", "9824370845", "Bijen Lama",Gender.MALE, "Bagmati", "Kathmandu", "KMC", "Swayambhu", LocalDate.of(2005, 5, 25)));
-        registry.addCitizen(new CitizenModel("27145347", "9824370846", "Bijen Lama",Gender.MALE, "Bagmati", "Kathmandu", "KMC", "Swayambhu", LocalDate.of(2005, 5, 25)));
-        registry.addCitizen(new CitizenModel("27145543", "9824370847", "Bijen Lama",Gender.MALE, "Bagmati", "Kathmandu", "KMC", "Swayambhu", LocalDate.of(2005, 5, 25)));
-        registry.addCitizen(new CitizenModel("271450987654321", "9824370848", "Bijen Lama",Gender.MALE, "Bagmati", "Kathmandu", "KMC", "Swayambhu", LocalDate.of(2005, 5, 25)));
-        registry.addCitizen(new CitizenModel("271456543", "9824370849", "Bijen Lama",Gender.MALE, "Bagmati", "Kathmandu", "KMC", "Swayambhu", LocalDate.of(2005, 5, 25)));
-        registry.addCitizen(new CitizenModel("27145654323456787654", "9824370840", "Bijen Lama",Gender.MALE, "Bagmati", "Kathmandu", "KMC", "Swayambhu", LocalDate.of(2005, 5, 25)));
-        registry.addCitizen(new CitizenModel("271455434545", "9824370841", "Bijen Lama",Gender.MALE, "Bagmati", "Kathmandu", "KMC", "Swayambhu", LocalDate.of(2005, 5, 25)));
-        registry.addCitizen(new CitizenModel("271455456556", "9824370842", "Bijen Lama",Gender.MALE, "Bagmati", "Kathmandu", "KMC", "Swayambhu", LocalDate.of(2005, 5, 25)));
+        registry.addCitizen(new CitizenModel("1a27", "9824370845", "Bijen Lama",Gender.MALE, "Bagmati", "Kathmandu", "KMC", "Swayambhu", LocalDate.of(2005, 5, 25)));
+        registry.addCitizen(new CitizenModel("2br21", "9824370845", "Bijen Lama",Gender.MALE, "Bagmati", "Kathmandu", "KMC", "Swayambhu", LocalDate.of(2000, 5, 25)));
+        registry.addCitizen(new CitizenModel("3231a", "9824370845", "Bijen Lama",Gender.MALE, "Bagmati", "Kathmandu", "KMC", "Swayambhu", LocalDate.of(1980, 5, 25)));
+        registry.addCitizen(new CitizenModel("4123a", "9824370845", "Bijen Lama",Gender.MALE, "Bagmati", "Kathmandu", "KMC", "Swayambhu", LocalDate.of(1988, 5, 25)));
     }
     
     /**

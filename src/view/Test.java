@@ -8,57 +8,15 @@ package view;
  *
  * @author bijen
  */
-
-import controller.AdminController;
-import controller.CitizenController;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import javax.swing.table.*;
-import model.CitizenModel;
-import model.CitizenRegistryModel;
-import model.AdminRegistryModel;
-
-public class WelcomePanelView extends javax.swing.JFrame {
+public class Test extends javax.swing.JFrame {
     
-    /**
-     * Display error message to the user.
-     * @param message the error message to show.
-     */
-    public void showError(String message) {
-        JOptionPane.showMessageDialog(null, message, "Errror", JOptionPane.ERROR_MESSAGE);
-    }
-    
-    public void updateTable(ArrayList<CitizenModel> citizens) {
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0);
-        
-        for (CitizenModel c : citizens) {
-            model.addRow(new Object[]{
-                c.getCitizenshipNumber(),
-                c.getVoterName(),
-                c.getAge(),
-                c.getDistrict(),
-                c.getVoteCenter()
-            });
-        }
-    }
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(WelcomePanelView.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Test.class.getName());
 
     /**
      * Creates new form Test
      */
-    public WelcomePanelView() {
+    public Test() {
         initComponents();
-        
-        // Citizens
-        CitizenRegistryModel registry = new CitizenRegistryModel();
-        new CitizenController(registry, this);
-        
-        // Admins
-        AdminRegistryModel adminRegistry = new AdminRegistryModel();
-        AdminController adminController = new AdminController(adminRegistry, registry, this);
-        
     }
 
     /**
@@ -70,17 +28,38 @@ public class WelcomePanelView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1193, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 635, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 25, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -108,9 +87,11 @@ public class WelcomePanelView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new WelcomePanelView().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Test().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
