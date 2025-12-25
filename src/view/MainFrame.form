@@ -32,7 +32,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,38,0,0,5,20"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,-75,0,0,5,20"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -315,10 +315,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="registerChoiceLabel" min="-2" pref="217" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="registerChoiceLabel" min="-2" pref="217" max="-2" attributes="0"/>
                                       <Component id="voterPhotoLabel" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -506,31 +506,43 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" pref="1004" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="316" max="-2" attributes="0"/>
-                              <Component id="jButton2" min="-2" pref="185" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="304" max="-2" attributes="0"/>
+                              <Component id="SortByNameBtn" min="-2" pref="185" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
                               <Component id="sortByAgebtn" min="-2" pref="185" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" min="-2" pref="1004" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="209" max="32767" attributes="0"/>
+                      <EmptySpace pref="180" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
+                      <Component id="updateCitizenBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="deleteRecordBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="426" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="101" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="SortByNameBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="sortByAgebtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="updateCitizenBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="deleteRecordBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="157" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -601,6 +613,7 @@
                         </Column>
                       </TableColumnModel>
                     </Property>
+                    <Property name="selectionMode" type="int" value="0"/>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
@@ -616,12 +629,673 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sortByAgebtnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="SortByNameBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sort By Citizenship Number"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SortByNameBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="updateCitizenBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Approve Status"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateCitizenBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="deleteRecordBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Delete record"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteRecordBtnActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="registrationPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="registrationPanel"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="citizenLabel" min="-2" pref="168" max="-2" attributes="0"/>
+                                  <Component id="phoneLabel" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                      <Component id="citizenshipField" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="phoneField" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="38" pref="38" max="-2" attributes="0"/>
+                                          <Component id="voteCenterLabel" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                          <Component id="nameLabel" min="-2" pref="74" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                      <Component id="DOBLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="42" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="nameField" max="32767" attributes="0"/>
+                                  <Component id="voteCenterField" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="yearCombo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                                      <Component id="monthCombo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jLabel1" min="-2" pref="87" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                              <Component id="districtLabel" min="-2" pref="83" max="-2" attributes="0"/>
+                                              <Component id="provinceLabel" min="-2" pref="86" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jLabel2" min="-2" pref="134" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="municipalityCombo" max="32767" attributes="0"/>
+                                  <Component id="provinceCombo" max="32767" attributes="0"/>
+                                  <Component id="genderCombo" max="32767" attributes="0"/>
+                                  <Component id="districtCombo" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                              <Component id="dayCombo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="513" max="-2" attributes="0"/>
+                      <Component id="submitBtn" min="-2" pref="199" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="goBackBtn" min="-2" pref="75" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="goBackBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="citizenLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="citizenshipField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="genderCombo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="phoneLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="phoneField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="provinceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="provinceCombo" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="districtLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="districtCombo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="municipalityCombo" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="voteCenterLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="voteCenterField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <Component id="DOBLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="yearCombo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="monthCombo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="dayCombo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                      <Component id="submitBtn" min="-2" pref="67" max="-2" attributes="0"/>
+                      <EmptySpace pref="162" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="nameLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="sansserif" size="24" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Name"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="nameField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="citizenLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="sansserif" size="18" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Citizenship Number"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="citizenshipField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="phoneLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="sansserif" size="18" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Phone Number"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="phoneField">
+            </Component>
+            <Component class="javax.swing.JComboBox" name="genderCombo">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Select"/>
+                    <StringItem index="1" value="Male"/>
+                    <StringItem index="2" value="Female"/>
+                    <StringItem index="3" value="Other"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="genderComboActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="sansserif" size="24" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Gender"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="provinceLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="sansserif" size="18" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Province"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="provinceCombo">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="8">
+                    <StringItem index="0" value="Select"/>
+                    <StringItem index="1" value="Koshi"/>
+                    <StringItem index="2" value="Madhesh"/>
+                    <StringItem index="3" value="Bagmati"/>
+                    <StringItem index="4" value="Gandaki"/>
+                    <StringItem index="5" value="Lumbini"/>
+                    <StringItem index="6" value="Karnali"/>
+                    <StringItem index="7" value="Sudurpaschim"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="districtLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="sansserif" size="18" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="District"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="districtCombo">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="81">
+                    <StringItem index="0" value="Select"/>
+                    <StringItem index="1" value="Bhojpur"/>
+                    <StringItem index="2" value="Dhankuta"/>
+                    <StringItem index="3" value="Ilam"/>
+                    <StringItem index="4" value="Jhapa"/>
+                    <StringItem index="5" value="Khotang"/>
+                    <StringItem index="6" value="Morang"/>
+                    <StringItem index="7" value="Okhaldhunga"/>
+                    <StringItem index="8" value="Panchthar"/>
+                    <StringItem index="9" value="Sankhuwasabha"/>
+                    <StringItem index="10" value="Solukhumbu"/>
+                    <StringItem index="11" value="Sunsari"/>
+                    <StringItem index="12" value="Taplejung"/>
+                    <StringItem index="13" value="Tehrathum"/>
+                    <StringItem index="14" value="Udayapur"/>
+                    <StringItem index="15" value="Bara"/>
+                    <StringItem index="16" value="Dhanusha"/>
+                    <StringItem index="17" value="Mahottari"/>
+                    <StringItem index="18" value="Parsa"/>
+                    <StringItem index="19" value="Rautahat"/>
+                    <StringItem index="20" value="Saptari"/>
+                    <StringItem index="21" value="Sarlahi"/>
+                    <StringItem index="22" value="Siraha"/>
+                    <StringItem index="23" value="Bhaktapur"/>
+                    <StringItem index="24" value="Chitwan"/>
+                    <StringItem index="25" value="Dhading"/>
+                    <StringItem index="26" value="Dolakha"/>
+                    <StringItem index="27" value="Kathmandu"/>
+                    <StringItem index="28" value="Kavrepalanchok"/>
+                    <StringItem index="29" value="Lalitpur"/>
+                    <StringItem index="30" value="Makwanpur"/>
+                    <StringItem index="31" value="Nuwakot"/>
+                    <StringItem index="32" value="Ramechhap"/>
+                    <StringItem index="33" value="Rasuwa"/>
+                    <StringItem index="34" value="Sindhuli"/>
+                    <StringItem index="35" value="Sindhupalchok"/>
+                    <StringItem index="36" value="Baglung"/>
+                    <StringItem index="37" value="Gorkha"/>
+                    <StringItem index="38" value="Kaski"/>
+                    <StringItem index="39" value="Lamjung"/>
+                    <StringItem index="40" value="Manang"/>
+                    <StringItem index="41" value="Mustang"/>
+                    <StringItem index="42" value="Myagdi"/>
+                    <StringItem index="43" value="Nawalpur"/>
+                    <StringItem index="44" value="Parbat"/>
+                    <StringItem index="45" value="Syangja"/>
+                    <StringItem index="46" value="Tanahu"/>
+                    <StringItem index="47" value="Arghakhanchi"/>
+                    <StringItem index="48" value="Banke"/>
+                    <StringItem index="49" value="Bardiya"/>
+                    <StringItem index="50" value="Dailekh"/>
+                    <StringItem index="51" value="Dang"/>
+                    <StringItem index="52" value="Dolpa"/>
+                    <StringItem index="53" value="Eastern Rukum"/>
+                    <StringItem index="54" value="Gulmi"/>
+                    <StringItem index="55" value="Humla"/>
+                    <StringItem index="56" value="Jajarkot"/>
+                    <StringItem index="57" value="Jumla"/>
+                    <StringItem index="58" value="Kalikot"/>
+                    <StringItem index="59" value="Kapilvastu"/>
+                    <StringItem index="60" value="Mugu"/>
+                    <StringItem index="61" value="Palpa"/>
+                    <StringItem index="62" value="Pyuthan"/>
+                    <StringItem index="63" value="Rolpa"/>
+                    <StringItem index="64" value="Rupandehi"/>
+                    <StringItem index="65" value="Salyan"/>
+                    <StringItem index="66" value="Surkhet"/>
+                    <StringItem index="67" value="Western Rukum"/>
+                    <StringItem index="68" value="Achham"/>
+                    <StringItem index="69" value="Baitadi"/>
+                    <StringItem index="70" value="Bajhang"/>
+                    <StringItem index="71" value="Bajura"/>
+                    <StringItem index="72" value="Dadeldhura"/>
+                    <StringItem index="73" value="Darchula"/>
+                    <StringItem index="74" value="Doti"/>
+                    <StringItem index="75" value="Kailali"/>
+                    <StringItem index="76" value="Kanchanpur"/>
+                    <StringItem index="77" value="Karnali Province"/>
+                    <StringItem index="78" value="Sudurpashchim Province"/>
+                    <StringItem index="79" value=" "/>
+                    <StringItem index="80" value=" "/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="sansserif" size="24" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Municipality"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="municipalityCombo">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="6">
+                    <StringItem index="0" value="Select "/>
+                    <StringItem index="1" value="Metropolitian"/>
+                    <StringItem index="2" value="Sub-Metropolitian"/>
+                    <StringItem index="3" value="Municipality"/>
+                    <StringItem index="4" value="Rural Municipality"/>
+                    <StringItem index="5" value=" "/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="voteCenterLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="sansserif" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Vote Center"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="voteCenterField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="voteCenterFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="DOBLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="sansserif" size="24" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Date Of Birth"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="yearCombo">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="149">
+                    <StringItem index="0" value="Year"/>
+                    <StringItem index="1" value="1905"/>
+                    <StringItem index="2" value="1906"/>
+                    <StringItem index="3" value="1907"/>
+                    <StringItem index="4" value="1908"/>
+                    <StringItem index="5" value="1909"/>
+                    <StringItem index="6" value="1910"/>
+                    <StringItem index="7" value="1911"/>
+                    <StringItem index="8" value="1912"/>
+                    <StringItem index="9" value="1913"/>
+                    <StringItem index="10" value="1914"/>
+                    <StringItem index="11" value="1915"/>
+                    <StringItem index="12" value="1916"/>
+                    <StringItem index="13" value="1917"/>
+                    <StringItem index="14" value="1918"/>
+                    <StringItem index="15" value="1919"/>
+                    <StringItem index="16" value="1920"/>
+                    <StringItem index="17" value="1921"/>
+                    <StringItem index="18" value="1922"/>
+                    <StringItem index="19" value="1923"/>
+                    <StringItem index="20" value="1924"/>
+                    <StringItem index="21" value="1925"/>
+                    <StringItem index="22" value="1926"/>
+                    <StringItem index="23" value="1927"/>
+                    <StringItem index="24" value="1928"/>
+                    <StringItem index="25" value="1929"/>
+                    <StringItem index="26" value="1930"/>
+                    <StringItem index="27" value="1931"/>
+                    <StringItem index="28" value="1932"/>
+                    <StringItem index="29" value="1933"/>
+                    <StringItem index="30" value="1934"/>
+                    <StringItem index="31" value="1935"/>
+                    <StringItem index="32" value="1936"/>
+                    <StringItem index="33" value="1937"/>
+                    <StringItem index="34" value="1938"/>
+                    <StringItem index="35" value="1939"/>
+                    <StringItem index="36" value="1940"/>
+                    <StringItem index="37" value="1941"/>
+                    <StringItem index="38" value="1942"/>
+                    <StringItem index="39" value="1943"/>
+                    <StringItem index="40" value="1944"/>
+                    <StringItem index="41" value="1945"/>
+                    <StringItem index="42" value="1946"/>
+                    <StringItem index="43" value="1947"/>
+                    <StringItem index="44" value="1948"/>
+                    <StringItem index="45" value="1949"/>
+                    <StringItem index="46" value="1950"/>
+                    <StringItem index="47" value="1951"/>
+                    <StringItem index="48" value="1952"/>
+                    <StringItem index="49" value="1953"/>
+                    <StringItem index="50" value="1954"/>
+                    <StringItem index="51" value="1955"/>
+                    <StringItem index="52" value="1956"/>
+                    <StringItem index="53" value="1957"/>
+                    <StringItem index="54" value="1958"/>
+                    <StringItem index="55" value="1959"/>
+                    <StringItem index="56" value="1960"/>
+                    <StringItem index="57" value="1961"/>
+                    <StringItem index="58" value="1962"/>
+                    <StringItem index="59" value="1963"/>
+                    <StringItem index="60" value="1964"/>
+                    <StringItem index="61" value="1965"/>
+                    <StringItem index="62" value="1966"/>
+                    <StringItem index="63" value="1967"/>
+                    <StringItem index="64" value="1968"/>
+                    <StringItem index="65" value="1969"/>
+                    <StringItem index="66" value="1970"/>
+                    <StringItem index="67" value="1971"/>
+                    <StringItem index="68" value="1972"/>
+                    <StringItem index="69" value="1973"/>
+                    <StringItem index="70" value="1974"/>
+                    <StringItem index="71" value="1975"/>
+                    <StringItem index="72" value="1976"/>
+                    <StringItem index="73" value="1977"/>
+                    <StringItem index="74" value="1978"/>
+                    <StringItem index="75" value="1979"/>
+                    <StringItem index="76" value="1980"/>
+                    <StringItem index="77" value="1981"/>
+                    <StringItem index="78" value="1982"/>
+                    <StringItem index="79" value="1983"/>
+                    <StringItem index="80" value="1984"/>
+                    <StringItem index="81" value="1985"/>
+                    <StringItem index="82" value="1986"/>
+                    <StringItem index="83" value="1987"/>
+                    <StringItem index="84" value="1988"/>
+                    <StringItem index="85" value="1989"/>
+                    <StringItem index="86" value="1990"/>
+                    <StringItem index="87" value="1991"/>
+                    <StringItem index="88" value="1992"/>
+                    <StringItem index="89" value="1993"/>
+                    <StringItem index="90" value="1994"/>
+                    <StringItem index="91" value="1995"/>
+                    <StringItem index="92" value="1996"/>
+                    <StringItem index="93" value="1997"/>
+                    <StringItem index="94" value="1998"/>
+                    <StringItem index="95" value="1999"/>
+                    <StringItem index="96" value="2000"/>
+                    <StringItem index="97" value="2001"/>
+                    <StringItem index="98" value="2002"/>
+                    <StringItem index="99" value="2003"/>
+                    <StringItem index="100" value="2004"/>
+                    <StringItem index="101" value="2005"/>
+                    <StringItem index="102" value="2006"/>
+                    <StringItem index="103" value="2007"/>
+                    <StringItem index="104" value="2008"/>
+                    <StringItem index="105" value="2009"/>
+                    <StringItem index="106" value="2010"/>
+                    <StringItem index="107" value="2011"/>
+                    <StringItem index="108" value="2012"/>
+                    <StringItem index="109" value="2013"/>
+                    <StringItem index="110" value="2014"/>
+                    <StringItem index="111" value="2015"/>
+                    <StringItem index="112" value="2016"/>
+                    <StringItem index="113" value="2017"/>
+                    <StringItem index="114" value="2018"/>
+                    <StringItem index="115" value="2019"/>
+                    <StringItem index="116" value="2020"/>
+                    <StringItem index="117" value="2021"/>
+                    <StringItem index="118" value="2022"/>
+                    <StringItem index="119" value="2023"/>
+                    <StringItem index="120" value="2024"/>
+                    <StringItem index="121" value="2025"/>
+                    <StringItem index="122" value="2026"/>
+                    <StringItem index="123" value="2027"/>
+                    <StringItem index="124" value="2028"/>
+                    <StringItem index="125" value="2029"/>
+                    <StringItem index="126" value="2030"/>
+                    <StringItem index="127" value="2031"/>
+                    <StringItem index="128" value="2032"/>
+                    <StringItem index="129" value="2033"/>
+                    <StringItem index="130" value="2034"/>
+                    <StringItem index="131" value="2035"/>
+                    <StringItem index="132" value="2036"/>
+                    <StringItem index="133" value="2037"/>
+                    <StringItem index="134" value="2038"/>
+                    <StringItem index="135" value="2039"/>
+                    <StringItem index="136" value="2040"/>
+                    <StringItem index="137" value="2041"/>
+                    <StringItem index="138" value="2042"/>
+                    <StringItem index="139" value="2043"/>
+                    <StringItem index="140" value="2044"/>
+                    <StringItem index="141" value="2045"/>
+                    <StringItem index="142" value="2046"/>
+                    <StringItem index="143" value="2047"/>
+                    <StringItem index="144" value="2048"/>
+                    <StringItem index="145" value="2049"/>
+                    <StringItem index="146" value="2050"/>
+                    <StringItem index="147" value=" "/>
+                    <StringItem index="148" value=" "/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="monthCombo">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="14">
+                    <StringItem index="0" value="Month"/>
+                    <StringItem index="1" value="1"/>
+                    <StringItem index="2" value="2"/>
+                    <StringItem index="3" value="3"/>
+                    <StringItem index="4" value="4"/>
+                    <StringItem index="5" value="5"/>
+                    <StringItem index="6" value="6"/>
+                    <StringItem index="7" value="7"/>
+                    <StringItem index="8" value="8"/>
+                    <StringItem index="9" value="9"/>
+                    <StringItem index="10" value="10"/>
+                    <StringItem index="11" value="11"/>
+                    <StringItem index="12" value="12"/>
+                    <StringItem index="13" value=" "/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="dayCombo">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="33">
+                    <StringItem index="0" value="Day"/>
+                    <StringItem index="1" value="1"/>
+                    <StringItem index="2" value="2"/>
+                    <StringItem index="3" value="3"/>
+                    <StringItem index="4" value="4"/>
+                    <StringItem index="5" value="5"/>
+                    <StringItem index="6" value="6"/>
+                    <StringItem index="7" value="7"/>
+                    <StringItem index="8" value="8"/>
+                    <StringItem index="9" value="9"/>
+                    <StringItem index="10" value="10"/>
+                    <StringItem index="11" value="11"/>
+                    <StringItem index="12" value="12"/>
+                    <StringItem index="13" value="13"/>
+                    <StringItem index="14" value="14"/>
+                    <StringItem index="15" value="15"/>
+                    <StringItem index="16" value="16"/>
+                    <StringItem index="17" value="17"/>
+                    <StringItem index="18" value="18"/>
+                    <StringItem index="19" value="19"/>
+                    <StringItem index="20" value="20"/>
+                    <StringItem index="21" value="21"/>
+                    <StringItem index="22" value="22"/>
+                    <StringItem index="23" value="23"/>
+                    <StringItem index="24" value="24"/>
+                    <StringItem index="25" value="25"/>
+                    <StringItem index="26" value="26"/>
+                    <StringItem index="27" value="27"/>
+                    <StringItem index="28" value="28"/>
+                    <StringItem index="29" value="29"/>
+                    <StringItem index="30" value="30"/>
+                    <StringItem index="31" value="31"/>
+                    <StringItem index="32" value="32"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="submitBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Submit"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submitBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="goBackBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Go Back"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="goBackBtnActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

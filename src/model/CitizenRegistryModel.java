@@ -1,11 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Manages citizen registration.
@@ -51,7 +49,7 @@ public class CitizenRegistryModel {
      * Returns a list of all citizens data.
      * @return  ArrayList of citizens
      */
-    public ArrayList<CitizenModel> getAllCitizens() {
+    public List<CitizenModel> getAllCitizens() {
         return new ArrayList<>(citizenMap.values());
     }
     
@@ -84,5 +82,52 @@ public class CitizenRegistryModel {
             throw new IllegalArgumentException("Citizen not found.");
         }
         citizen.setStatus(status);
+    }
+    
+    /**
+     *  updates
+     * 
+     * @param citizen 
+     */
+    public void updateCitizen(CitizenModel citizen) {
+        if (citizen == null) {
+            throw new IllegalArgumentException("Citizen cannot be null");
+        }
+        
+        String key = sampleKey(citizen.getCitizenshipNumber());
+        
+        if (!citizenMap.containsKey(key)) {
+            throw new IllegalArgumentException("Citizen not found");
+        }
+        citizenMap.put(key, citizen);
+    }
+    
+    public boolean removeCitizen(String citizenshipNumber) {
+        if (citizenshipNumber == null || citizenshipNumber.trim().isEmpty()) {
+            return false;
+        }
+        return citizenMap.remove(sampleKey(citizenshipNumber)) != null;
+    }
+    
+    public List<CitizenModel> findByName(String name) {
+        List<CitizenModel> results = new ArrayList<>();
+        if (name == null || name.trim().isEmpty()) {
+            return results;
+        }
+        String searchName = name.trim().toLowerCase();
+        for (CitizenModel citizen : citizenMap.values()) {
+            if (citizen.getVoterName().toLowerCase().contains(searchName)) {
+                results.add(citizen);
+            }
+        } 
+        return results;
+    }
+    
+    public int count() {
+        return citizenMap.size();
+    }
+    
+    private String sampleKey(String citizenshipNumber) {
+        return citizenshipNumber.trim().toUpperCase();
     }
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.util.HashSet;
@@ -31,10 +27,9 @@ public class AdminRegistryModel {
         if (admin == null) {
             throw new IllegalArgumentException("Admin cannot be null.");
         }
-        if (adminExists(admin.getAdminId())) {
+        if (!adminSet.add(admin)) {
             throw new IllegalArgumentException("Admin with this ID already exists.");
         }
-        adminSet.add(admin);
     }
     
     /**

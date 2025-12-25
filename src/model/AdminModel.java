@@ -33,22 +33,23 @@ public class AdminModel {
         this.adminId = adminId.trim();
         this.adminPassword = adminPassword.trim();
     }
-
+    
+    // getter for adminId
     public String getAdminId() {
         return adminId;
     }
     
     /**
      * Checks if the provided credentials match the administrator's credentials.
-     * @param inputId The input admin ID.
-     * @param inputPassword The input password.
+     * @param adminId The input admin ID.
+     * @param password The input password.
      * @return true if both match otherwise false.
      */
-    public boolean authenticate(String inputId, String inputPassword) {
-        if (inputId == null || inputPassword == null) {
+    public boolean authenticate(String adminId, String password) {
+        if (adminId == null || password == null) {
             return false;
         }
-        return adminId.equals(inputId.trim()) && adminPassword.equals(inputPassword.trim());
+        return this.adminId.equals(adminId.trim()) && this.adminPassword.equals(password.trim());
     }
     
     /**
@@ -56,6 +57,7 @@ public class AdminModel {
      * @param oldPassword Current password
      * @param newPassword New password to set
      * @throws IllegalArgumentException if new password is null, empty or too short
+     * @throws SecurityException if old password is incorrect
      */
     public void changePassword(String oldPassword, String newPassword) {
         if (oldPassword == null || !adminPassword.equals(oldPassword.trim())) {
@@ -69,5 +71,24 @@ public class AdminModel {
         }
         
         this.adminPassword = newPassword.trim();
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        
+        if (!(obj instanceof AdminModel)) {
+            return true;
+        }
+        
+        AdminModel other = (AdminModel) obj;
+        return adminId.equals(other.adminId);
+    }
+    
+    @Override
+    public int hashCode() {
+        return adminId.hashCode();
     }
 }

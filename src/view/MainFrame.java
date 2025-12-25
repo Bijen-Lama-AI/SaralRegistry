@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package view;
 
 /**
@@ -20,10 +17,13 @@ import model.CitizenRegistryModel;
 import model.AdminRegistryModel;
 import controller.AdminController;
 import controller.CitizenSorter;
+import java.time.LocalDate;
+import java.time.Month;
 
 public class MainFrame extends javax.swing.JFrame {
     
     private AdminController adminController;
+    private CitizenController citizenController;
     private CitizenRegistryModel citizenRegistry;
     private AdminRegistryModel adminRegistry;
     
@@ -33,6 +33,10 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public void showError(String message) {
         JOptionPane.showMessageDialog(null, message, "Errror", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(null, message, "Message", JOptionPane.ERROR_MESSAGE);
     }
     
     public void updateTable(ArrayList<CitizenModel> citizens) {
@@ -53,6 +57,21 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
     
+    private void clearForm() {
+        citizenshipField.setText("");
+        phoneField.setText("");
+        nameField.setText("");
+        voteCenterField.setText("");
+        
+        genderCombo.setSelectedIndex(0);
+        provinceCombo.setSelectedIndex(0);
+        districtCombo.setSelectedIndex(0);
+        municipalityCombo.setSelectedIndex(0);
+        yearCombo.setSelectedIndex(0);
+        monthCombo.setSelectedIndex(0);
+        dayCombo.setSelectedIndex(0);
+    }
+    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
 
     /**
@@ -68,7 +87,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         //Citizens
         citizenRegistry = new CitizenRegistryModel();
-        new CitizenController(citizenRegistry, this);
+        citizenController = new CitizenController(citizenRegistry, this);
         
         // Admins
         adminRegistry = new AdminRegistryModel();
@@ -121,7 +140,32 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         OverviewTable = new javax.swing.JTable();
         sortByAgebtn = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        SortByNameBtn = new javax.swing.JButton();
+        updateCitizenBtn = new javax.swing.JButton();
+        deleteRecordBtn = new javax.swing.JButton();
+        registrationPanel = new javax.swing.JPanel();
+        nameLabel = new javax.swing.JLabel();
+        nameField = new javax.swing.JTextField();
+        citizenLabel = new javax.swing.JLabel();
+        citizenshipField = new javax.swing.JTextField();
+        phoneLabel = new javax.swing.JLabel();
+        phoneField = new javax.swing.JTextField();
+        genderCombo = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        provinceLabel = new javax.swing.JLabel();
+        provinceCombo = new javax.swing.JComboBox<>();
+        districtLabel = new javax.swing.JLabel();
+        districtCombo = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        municipalityCombo = new javax.swing.JComboBox<>();
+        voteCenterLabel = new javax.swing.JLabel();
+        voteCenterField = new javax.swing.JTextField();
+        DOBLabel = new javax.swing.JLabel();
+        yearCombo = new javax.swing.JComboBox<>();
+        monthCombo = new javax.swing.JComboBox<>();
+        dayCombo = new javax.swing.JComboBox<>();
+        submitBtn = new javax.swing.JButton();
+        goBackBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Citizen Voting Registration System");
@@ -174,7 +218,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
         footerPanel.setBackground(new java.awt.Color(25, 55, 109));
-        footerPanel.setLayout(new java.awt.GridLayout());
+        footerPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         footerLabel1.setFont(new java.awt.Font("Engravers MT", 1, 14)); // NOI18N
         footerLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -284,10 +328,10 @@ public class MainFrame extends javax.swing.JFrame {
             adminChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adminChoicePanel1Layout.createSequentialGroup()
                 .addGroup(adminChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(adminChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(registerChoiceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(adminChoicePanel1Layout.createSequentialGroup()
-                            .addGap(66, 66, 66)
+                    .addGroup(adminChoicePanel1Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(adminChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(registerChoiceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(voterPhotoLabel)))
                     .addGroup(adminChoicePanel1Layout.createSequentialGroup()
                         .addGap(149, 149, 149)
@@ -387,6 +431,7 @@ public class MainFrame extends javax.swing.JFrame {
                 "Citizenship Number", "Name", "Age", "Gender", "Province", "District", "Center", "Status"
             }
         ));
+        OverviewTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(OverviewTable);
 
         sortByAgebtn.setText("Sort By Age");
@@ -396,10 +441,24 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Sort By Citizenship Number");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        SortByNameBtn.setText("Sort By Citizenship Number");
+        SortByNameBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                SortByNameBtnActionPerformed(evt);
+            }
+        });
+
+        updateCitizenBtn.setText("Approve Status");
+        updateCitizenBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateCitizenBtnActionPerformed(evt);
+            }
+        });
+
+        deleteRecordBtn.setText("Delete record");
+        deleteRecordBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteRecordBtnActionPerformed(evt);
             }
         });
 
@@ -410,28 +469,228 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(admindashboardPanelLayout.createSequentialGroup()
                 .addGroup(admindashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(admindashboardPanelLayout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1004, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(304, 304, 304)
+                        .addComponent(SortByNameBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(184, 184, 184)
+                        .addComponent(sortByAgebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(admindashboardPanelLayout.createSequentialGroup()
-                        .addGap(316, 316, 316)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(114, 114, 114)
-                        .addComponent(sortByAgebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(209, Short.MAX_VALUE))
+                        .addGap(116, 116, 116)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1004, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(180, Short.MAX_VALUE))
+            .addGroup(admindashboardPanelLayout.createSequentialGroup()
+                .addGap(219, 219, 219)
+                .addComponent(updateCitizenBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(deleteRecordBtn)
+                .addGap(426, 426, 426))
         );
         admindashboardPanelLayout.setVerticalGroup(
             admindashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, admindashboardPanelLayout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
+                .addGap(92, 92, 92)
                 .addGroup(admindashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(SortByNameBtn)
                     .addComponent(sortByAgebtn))
-                .addGap(41, 41, 41)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addGap(27, 27, 27)
+                .addGroup(admindashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateCitizenBtn)
+                    .addComponent(deleteRecordBtn))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         cardPanel.add(admindashboardPanel, "adminDashboard");
+
+        nameLabel.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        nameLabel.setText("Name");
+
+        citizenLabel.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        citizenLabel.setText("Citizenship Number");
+
+        phoneLabel.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        phoneLabel.setText("Phone Number");
+
+        genderCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Male", "Female", "Other" }));
+        genderCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genderComboActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        jLabel1.setText("Gender");
+
+        provinceLabel.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        provinceLabel.setText("Province");
+
+        provinceCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Koshi", "Madhesh", "Bagmati", "Gandaki", "Lumbini", "Karnali", "Sudurpaschim" }));
+
+        districtLabel.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        districtLabel.setText("District");
+
+        districtCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Bhojpur", "Dhankuta", "Ilam", "Jhapa", "Khotang", "Morang", "Okhaldhunga", "Panchthar", "Sankhuwasabha", "Solukhumbu", "Sunsari", "Taplejung", "Tehrathum", "Udayapur", "Bara", "Dhanusha", "Mahottari", "Parsa", "Rautahat", "Saptari", "Sarlahi", "Siraha", "Bhaktapur", "Chitwan", "Dhading", "Dolakha", "Kathmandu", "Kavrepalanchok", "Lalitpur", "Makwanpur", "Nuwakot", "Ramechhap", "Rasuwa", "Sindhuli", "Sindhupalchok", "Baglung", "Gorkha", "Kaski", "Lamjung", "Manang", "Mustang", "Myagdi", "Nawalpur", "Parbat", "Syangja", "Tanahu", "Arghakhanchi", "Banke", "Bardiya", "Dailekh", "Dang", "Dolpa", "Eastern Rukum", "Gulmi", "Humla", "Jajarkot", "Jumla", "Kalikot", "Kapilvastu", "Mugu", "Palpa", "Pyuthan", "Rolpa", "Rupandehi", "Salyan", "Surkhet", "Western Rukum", "Achham", "Baitadi", "Bajhang", "Bajura", "Dadeldhura", "Darchula", "Doti", "Kailali", "Kanchanpur", "Karnali Province", "Sudurpashchim Province", " ", " " }));
+
+        jLabel2.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        jLabel2.setText("Municipality");
+
+        municipalityCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select ", "Metropolitian", "Sub-Metropolitian", "Municipality", "Rural Municipality", " " }));
+
+        voteCenterLabel.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        voteCenterLabel.setText("Vote Center");
+
+        voteCenterField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voteCenterFieldActionPerformed(evt);
+            }
+        });
+
+        DOBLabel.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        DOBLabel.setText("Date Of Birth");
+
+        yearCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "1905", "1906", "1907", "1908", "1909", "1910", "1911", "1912", "1913", "1914", "1915", "1916", "1917", "1918", "1919", "1920", "1921", "1922", "1923", "1924", "1925", "1926", "1927", "1928", "1929", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040", "2041", "2042", "2043", "2044", "2045", "2046", "2047", "2048", "2049", "2050", " ", " " }));
+
+        monthCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
+
+        dayCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32" }));
+
+        submitBtn.setText("Submit");
+        submitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitBtnActionPerformed(evt);
+            }
+        });
+
+        goBackBtn.setText("Go Back");
+        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout registrationPanelLayout = new javax.swing.GroupLayout(registrationPanel);
+        registrationPanel.setLayout(registrationPanelLayout);
+        registrationPanelLayout.setHorizontalGroup(
+            registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registrationPanelLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(registrationPanelLayout.createSequentialGroup()
+                        .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(citizenLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(phoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(registrationPanelLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(citizenshipField))
+                            .addGroup(registrationPanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(phoneField))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registrationPanelLayout.createSequentialGroup()
+                        .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(registrationPanelLayout.createSequentialGroup()
+                                    .addGap(38, 38, 38)
+                                    .addComponent(voteCenterLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, registrationPanelLayout.createSequentialGroup()
+                                    .addGap(55, 55, 55)
+                                    .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(registrationPanelLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(DOBLabel)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                        .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nameField)
+                            .addComponent(voteCenterField)
+                            .addGroup(registrationPanelLayout.createSequentialGroup()
+                                .addComponent(yearCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                .addComponent(monthCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21)))))
+                .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(registrationPanelLayout.createSequentialGroup()
+                        .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(registrationPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(registrationPanelLayout.createSequentialGroup()
+                                .addGap(219, 219, 219)
+                                .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(districtLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(provinceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(registrationPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(3, 3, 3)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(municipalityCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(provinceCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(genderCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(districtCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(241, 241, 241))
+                    .addGroup(registrationPanelLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(dayCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(registrationPanelLayout.createSequentialGroup()
+                .addGap(513, 513, 513)
+                .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registrationPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(goBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86))
+        );
+        registrationPanelLayout.setVerticalGroup(
+            registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registrationPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(goBackBtn)
+                .addGap(61, 61, 61)
+                .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(citizenLabel)
+                    .addComponent(citizenshipField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(genderCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(40, 40, 40)
+                .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(phoneLabel)
+                    .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(provinceLabel)
+                        .addComponent(provinceCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35)
+                .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameLabel)
+                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(districtLabel)
+                    .addComponent(districtCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(registrationPanelLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(municipalityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(registrationPanelLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(voteCenterLabel)
+                            .addComponent(voteCenterField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(19, 19, 19)
+                .addComponent(DOBLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(registrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(yearCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(monthCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dayCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(87, 87, 87)
+                .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(162, Short.MAX_VALUE))
+        );
+
+        cardPanel.add(registrationPanel, "registrationPanel");
 
         getContentPane().add(cardPanel, java.awt.BorderLayout.CENTER);
 
@@ -449,6 +708,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void registerChoiceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerChoiceBtnActionPerformed
         // TODO add your handling code here:
+        showCard("registrationPanel");
     }//GEN-LAST:event_registerChoiceBtnActionPerformed
 
     private void adminLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLoginBtnActionPerformed
@@ -473,18 +733,117 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void sortByAgebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortByAgebtnActionPerformed
         // TODO add your handling code here:
-        ArrayList<CitizenModel> citizens = citizenRegistry.getAllCitizens();
+        ArrayList<CitizenModel> citizens = (ArrayList<CitizenModel>) citizenRegistry.getAllCitizens();
         CitizenSorter.sortByAge(citizens);
         updateTable(citizens);
     }//GEN-LAST:event_sortByAgebtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void SortByNameBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortByNameBtnActionPerformed
         // TODO add your handling code here:
-        ArrayList<CitizenModel> citizens = citizenRegistry.getAllCitizens();
+        ArrayList<CitizenModel> citizens = (ArrayList<CitizenModel>) citizenRegistry.getAllCitizens();
         
         CitizenSorter.sortByCitizenshipNumber(citizens);
         updateTable(citizens);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_SortByNameBtnActionPerformed
+
+    private void genderComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_genderComboActionPerformed
+
+    private void voteCenterFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voteCenterFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_voteCenterFieldActionPerformed
+
+    private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
+        // TODO add your handling code here:
+        String citizenship = citizenshipField.getText().trim();
+        String phone = phoneField.getText().trim();
+        String name = nameField.getText().trim();
+        String voteCenter = voteCenterField.getText().trim();
+        
+        if (citizenship.isEmpty() || phone.isEmpty() || name.isEmpty() || voteCenter.isEmpty()) {
+            showError("Please fill all required fields.");
+            return;
+        }
+        
+        if (!phone.matches("\\d{10}")) {
+            showError("Phone number must be 10 digits.");
+            return;
+        }
+        
+        CitizenModel.Gender gender;
+        try {
+            gender = CitizenModel.Gender.valueOf(genderCombo.getSelectedItem().toString().toUpperCase());
+        } catch (Exception e) {
+            this.showError("Invalid gender selected.");
+            return;
+        }
+        
+        if (provinceCombo.getSelectedIndex() == 0 ||
+                districtCombo.getSelectedIndex() == 0 ||
+                municipalityCombo.getSelectedIndex() == 0) {
+            showError("Please select valid location details.");
+            return;
+        }
+        
+        LocalDate dob;
+        try {
+            int year = Integer.parseInt(yearCombo.getSelectedItem().toString());
+            int month = Integer.parseInt(monthCombo.getSelectedItem().toString());
+            int day = Integer.parseInt(dayCombo.getSelectedItem().toString());
+            dob = LocalDate.of(year, month, day);
+        } catch (NumberFormatException e) {
+            this.showError("Invalid date of birth");
+            return;
+        }
+       
+        citizenController.addCitizenFromUI(citizenship, phone, name, gender, provinceCombo.getSelectedItem().toString(),
+                districtCombo.getSelectedItem().toString(), municipalityCombo.getSelectedItem().toString(), voteCenter, dob);
+        clearForm();
+    }//GEN-LAST:event_submitBtnActionPerformed
+
+    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
+        // TODO add your handling code here:
+        showCard("home");
+    }//GEN-LAST:event_goBackBtnActionPerformed
+
+    private void updateCitizenBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCitizenBtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = OverviewTable.getSelectedRow();
+        
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a citizen to update.");
+            return;
+        }
+        
+        String citizenshipNumber = OverviewTable.getValueAt(selectedRow, 0).toString();
+        
+        CitizenModel.RegistrationStatus[] statuses = CitizenModel.RegistrationStatus.values();
+        CitizenModel.RegistrationStatus newStatus = (CitizenModel.RegistrationStatus) JOptionPane.showInputDialog(this, "Select new status", "Update status", JOptionPane.PLAIN_MESSAGE, null, statuses, statuses[0]);
+        
+        if (newStatus != null) {
+            citizenController.updateCitizenStatus(citizenshipNumber, newStatus);
+        }
+    }//GEN-LAST:event_updateCitizenBtnActionPerformed
+
+    private void deleteRecordBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteRecordBtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = OverviewTable.getSelectedRow();
+        
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a citizen to delete.");
+            return;
+        }
+        
+        String citizenshipNumber = OverviewTable.getValueAt(selectedRow, 0).toString();
+        
+        int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete citizen with ID: " + citizenshipNumber + " ?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+        
+        if (confirm == JOptionPane.YES_OPTION) {
+            citizenController.deleteCitizen(citizenshipNumber);
+        }
+        
+    }//GEN-LAST:event_deleteRecordBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -514,7 +873,9 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AdminField;
     private javax.swing.JLabel AdminLoginLabel;
+    private javax.swing.JLabel DOBLabel;
     private javax.swing.JTable OverviewTable;
+    private javax.swing.JButton SortByNameBtn;
     private javax.swing.JPanel adminChoicePanel;
     private javax.swing.JPanel adminChoicePanel1;
     private javax.swing.JTextField adminIdField;
@@ -528,20 +889,43 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel cardPanel;
     private javax.swing.JLabel choiceLabel;
     private javax.swing.JToggleButton chooselogInAsAdminBtn;
+    private javax.swing.JLabel citizenLabel;
+    private javax.swing.JTextField citizenshipField;
+    private javax.swing.JComboBox<String> dayCombo;
+    private javax.swing.JButton deleteRecordBtn;
+    private javax.swing.JComboBox<String> districtCombo;
+    private javax.swing.JLabel districtLabel;
     private javax.swing.JLabel footerLabel1;
     private javax.swing.JLabel footerLabel2;
     private javax.swing.JPanel footerPanel;
+    private javax.swing.JComboBox<String> genderCombo;
+    private javax.swing.JButton goBackBtn;
     private javax.swing.JLabel headerLabel1;
     private javax.swing.JLabel headerLabel2;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JPanel homePanel;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel logInAsAdminLabel;
     private javax.swing.JLabel logoLabel;
+    private javax.swing.JComboBox<String> monthCombo;
+    private javax.swing.JComboBox<String> municipalityCombo;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField phoneField;
+    private javax.swing.JLabel phoneLabel;
+    private javax.swing.JComboBox<String> provinceCombo;
+    private javax.swing.JLabel provinceLabel;
     private javax.swing.JToggleButton registerChoiceBtn;
     private javax.swing.JLabel registerChoiceLabel;
+    private javax.swing.JPanel registrationPanel;
     private javax.swing.JButton sortByAgebtn;
+    private javax.swing.JButton submitBtn;
+    private javax.swing.JButton updateCitizenBtn;
+    private javax.swing.JTextField voteCenterField;
+    private javax.swing.JLabel voteCenterLabel;
     private javax.swing.JLabel voterPhotoLabel;
+    private javax.swing.JComboBox<String> yearCombo;
     // End of variables declaration//GEN-END:variables
 }

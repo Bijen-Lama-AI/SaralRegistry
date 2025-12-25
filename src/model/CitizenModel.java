@@ -90,6 +90,13 @@ public class CitizenModel {
     private void validateFields(String citizenshipNumber, String phoneNumber, String voterName, Gender gender, String province, String district,
             String municipality, String voteCenter, LocalDate dateOfBirth) {
         
+        validateString(citizenshipNumber, "Citizenship number", "\\d+");
+        validateString(voterName, "Voter name", "[a-zA-Z ]+");
+        validateString(province, "Province", "[a-zA-Z0-9-']+");
+        validateString(district, "District", "[a-zA-Z0-9-']+");
+        validateString(municipality, "Municipality", "[a-zA-Z0-9-']+");
+        validateString(voteCenter, "Vote center", "[a-zA-Z0-9-']+");
+        
         if (citizenshipNumber == null || citizenshipNumber.trim().isEmpty()) {
             throw new IllegalArgumentException("Citizenship number cannot be null or empty.");
         }
@@ -128,12 +135,20 @@ public class CitizenModel {
         int calculatedAge = calculateAge(dateOfBirth);
         
         if (calculatedAge < MINIMUM_VOTING_AGE)
-            throw new IllegalArgumentException("Citizen must be at least" + MINIMUM_VOTING_AGE + " years old.");
+            throw new IllegalArgumentException("Citizen must be at least " + MINIMUM_VOTING_AGE + " years old.");
         
         if (calculatedAge > MAXIMUM_VOTING_AGE)
             throw new IllegalArgumentException("Invalid age detected: " + calculatedAge + " years.");
             
         }
+        
+        private void validateString(String value, String fieldName, String pattern) {
+            if (value == null || value.trim().isEmpty()) 
+                throw new IllegalArgumentException(fieldName + " cannot be null or empty.");
+            if (!value.trim().matches(pattern))
+                throw new IllegalArgumentException(fieldName + " cannot be null or empty.");
+        }
+    
     
         // Age calculation
         private int calculateAge(LocalDate dob) {
@@ -157,7 +172,7 @@ public class CitizenModel {
         return gender;
     }
     
-    public LocalDate getDateOfBith() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
     public int getAge() {
@@ -221,30 +236,24 @@ public class CitizenModel {
     }
 
     public void setProvince(String province) {
-        if (province == null || province.trim().isEmpty() || !province.matches("[a-zA-Z]+")) {
-            throw new IllegalArgumentException("Province cannot be null or empty.");
-        }
+        validateString(province, "Province", "[a-zA-Z0-9 \\-']+");
         this.province = province.trim();
     }
 
     public void setDistrict(String district) {
-        if (district == null || district.trim().isEmpty() || !district.matches("[a-zA-Z]+")) {
-            throw new IllegalArgumentException("District cannot be null or empty.");
-        }
+        validateString(district, "District", "[a-zA-Z0-9 \\-']+");
         this.district = district.trim();
     }
 
     public void setMunicipality(String municipality) {
-        if (municipality == null || municipality.trim().isEmpty() || !municipality.matches("[a-zA-Z]+")) {
-            throw new IllegalArgumentException("Municipality cannot be null or empty.");
-        }
+        validateString(municipality, "Municipality", "[a-zA-Z0-9 \\-']+");
+        
         this.municipality = municipality.trim();
     }
 
     public void setVoteCenter(String voteCenter) {
-        if (voteCenter == null || voteCenter.trim().isEmpty() || !voteCenter.matches("[a-zA-Z ]+")) {
-            throw new IllegalArgumentException("Vote center cannot be null or empty.");
-        }
+        validateString(voteCenter, "Vote center", "[a-zA-Z0-9 \\-']+");
+        
         this.voteCenter = voteCenter.trim();
     }  
     

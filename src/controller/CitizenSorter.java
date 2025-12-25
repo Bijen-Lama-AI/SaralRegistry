@@ -1,34 +1,37 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controller;
 
 import model.CitizenModel;
 import java.util.ArrayList;
 
 /**
- *  
+ * Provides sort by citizenship number and by age 
  * @author bijen
  */
 public class CitizenSorter {
     
     /**
-     * Sorts citizens by citizenship number using insertion sort
+     * Sorts citizens by citizenship number in ascending order using insertion sort
      * @param citizens 
      */
     public static void sortByCitizenshipNumber(ArrayList<CitizenModel> citizens) {
         for (int i = 1; i < citizens.size(); i++) {
             CitizenModel key = citizens.get(i);
+            long keyNumber = Long.parseLong(key.getCitizenshipNumber());
             int j = i -1;
             
-            while (j >= 0 && citizens.get(j).getCitizenshipNumber().compareTo(key.getCitizenshipNumber()) > 0) {
-                citizens.set(j + 1, key);
+            while (j >= 0 && Long.parseLong(citizens.get(j).getCitizenshipNumber()) > keyNumber) {
+                citizens.set(j + 1, citizens.get(j));
+                j--;
             }
+            citizens.set(j+1, key);
         }
     }
     
-    // Merge sort of age
+    /**
+     * Sorts citizens by age in ascending order using merge sort.
+     * @param citizens 
+     */
     public static void sortByAge(ArrayList<CitizenModel> citizens) {
         if (citizens == null || citizens.size() <= 1) {
             return;
@@ -36,19 +39,26 @@ public class CitizenSorter {
         mergeSort(citizens, 0, citizens.size() - 1);
     }
     
+    /**
+     * Recursive method to divide list into smaller parts
+     */
     private static void mergeSort(ArrayList<CitizenModel> list, int left, int right) {
         if (left >= right) {
             return;
         }
         
-        int mid = (left + right) / 2;
+        int mid = left + (right - left) / 2;
         
         mergeSort(list, left, mid);
+        
         mergeSort(list, mid + 1, right);
         
         merge(list, left, mid, right);
     }
     
+    /**
+     * Merge two sorted sub list into single
+     */
     private static void merge(ArrayList<CitizenModel> list, int left, int mid, int right) {
         ArrayList<CitizenModel> temp = new ArrayList<>();
         

@@ -4,6 +4,7 @@
  */
 package controller;
 
+import java.util.ArrayList;
 import model.AdminModel;
 import model.AdminRegistryModel;
 import model.CitizenModel;
@@ -48,7 +49,12 @@ public class AdminController {
      * @return authenticated
      */
     public boolean login(String inputId, String inputPassword) {
-        AdminModel loggedAdmin = adminRegistry.authenticateAdmin(inputId, inputPassword);
+        if (inputId == null || inputPassword == null) {
+            view.showError("ID and password cannot be null.");
+            return false;
+        }
+        
+        AdminModel loggedAdmin = adminRegistry.authenticateAdmin(inputId.trim(), inputPassword.trim());
         if (loggedAdmin == null) {
             loggedIn = false;
             view.showError("Invalid ID or Password.");
@@ -75,15 +81,12 @@ public class AdminController {
         if (!ensureLoggedIn()) {
             return;
         }
-        CitizenModel citizen = registry.findByCitizenshipNumber(citizenshipNumber);
-        
-        if (citizen == null) {
-            view.showError("Citizen not found.");
-            return;
+        try {
+            registry.updateCitizenStatus(citizenshipNumber, RegistrationStatus.APPROVED);
+            view.updateTable((ArrayList<CitizenModel>) registry.getAllCitizens());
+        } catch (IllegalArgumentException e) {
+            view.showError(e.getMessage());
         }
-        
-        citizen.setStatus(RegistrationStatus.APPROVED);
-        //view.updateTable(registry.getAllCitizens());
     }
     
     /**
@@ -95,15 +98,12 @@ public class AdminController {
             return;
         }
         
-        CitizenModel citizen = registry.findByCitizenshipNumber(citizenship);
-        
-        if (citizen == null) {
-            view.showError("Citizen not found.");
-            return;
+        try {
+            registry.updateCitizenStatus(citizenship, RegistrationStatus.REJECTED);
+            view.updateTable((ArrayList<CitizenModel>) registry.getAllCitizens());
+        } catch (IllegalArgumentException e) {
+            view.showError(e.getMessage());
         }
-        
-        citizen.setStatus(RegistrationStatus.REJECTED);
-        view.updateTable(registry.getAllCitizens());
     }
     
     /**
