@@ -53,7 +53,7 @@ public class CitizenModel {
     }
     
     // Fields
-    private final String citizenshipNumber; // Unique ID
+    private String citizenshipNumber; // Unique ID
     private String phoneNumber;
     private String voterName;
     private Gender gender;
@@ -67,7 +67,8 @@ public class CitizenModel {
     
     // Constructor with validation
 
-    public CitizenModel(String citizenshipNumber, String phoneNumber, String voterName, Gender gender, String province, String district, String municipality, String voteCenter, LocalDate dateOfBirth) {
+    public CitizenModel(String citizenshipNumber, String phoneNumber, String voterName, Gender gender, String province, String district, String municipality,
+            String voteCenter, LocalDate dateOfBirth) {
         
         validateFields(citizenshipNumber, phoneNumber, voterName, gender, province, district, municipality, voteCenter, dateOfBirth);
         
@@ -146,7 +147,7 @@ public class CitizenModel {
             if (value == null || value.trim().isEmpty()) 
                 throw new IllegalArgumentException(fieldName + " cannot be null or empty.");
             if (!value.trim().matches(pattern))
-                throw new IllegalArgumentException(fieldName + " cannot be null or empty.");
+                throw new IllegalArgumentException(fieldName + " must match pattern: " + pattern);
         }
     
     

@@ -54,8 +54,10 @@ public class CitizenController {
      * @param voteCenter
      * @param dob
      */
-    public void addCitizenFromUI(String citizenshipNumber, String phoneNumber, String voterName, Gender gender, String province, String district, String municipality, String voteCenter, LocalDate dob) {
-        if (citizenshipNumber == null || citizenshipNumber.trim().isEmpty() || voterName == null || voterName.trim().isEmpty() || phoneNumber == null || phoneNumber.trim().isEmpty()) {
+    public void addCitizenFromUI(String citizenshipNumber, String phoneNumber, String voterName, Gender gender, String province, 
+            String district, String municipality, String voteCenter, LocalDate dob) {
+        if (citizenshipNumber == null || citizenshipNumber.trim().isEmpty() || voterName == null || voterName.trim().isEmpty() || 
+                phoneNumber == null || phoneNumber.trim().isEmpty()) {
            view.showError("Fields cannot be empty");
            return;
         }
