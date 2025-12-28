@@ -177,7 +177,7 @@ public class MainFrame extends javax.swing.JFrame {
         headerPanel.setBackground(new java.awt.Color(196, 30, 58));
 
         logoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logo.png"))); // NOI18N
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/logo.png"))); // NOI18N
 
         headerLabel1.setFont(new java.awt.Font("Bodoni MT", 1, 48)); // NOI18N
         headerLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -242,7 +242,7 @@ public class MainFrame extends javax.swing.JFrame {
         adminChoicePanel.setMinimumSize(new java.awt.Dimension(400, 400));
 
         adminPhotoLabel.setBackground(new java.awt.Color(255, 255, 255));
-        adminPhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/admin.png"))); // NOI18N
+        adminPhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/admin.png"))); // NOI18N
 
         chooselogInAsAdminBtn.setBackground(new java.awt.Color(220, 20, 60));
         chooselogInAsAdminBtn.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -307,7 +307,7 @@ public class MainFrame extends javax.swing.JFrame {
         adminChoicePanel1.setPreferredSize(new java.awt.Dimension(400, 400));
 
         voterPhotoLabel.setBackground(new java.awt.Color(255, 255, 255));
-        voterPhotoLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\bijen\\Downloads\\register.png")); // NOI18N
+        voterPhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/register.png"))); // NOI18N
 
         registerChoiceBtn.setBackground(new java.awt.Color(220, 20, 60));
         registerChoiceBtn.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -366,7 +366,7 @@ public class MainFrame extends javax.swing.JFrame {
         adminLoginPanel.setLayout(new java.awt.GridBagLayout());
 
         AdminLoginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        AdminLoginLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/protection.png"))); // NOI18N
+        AdminLoginLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/protection.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;

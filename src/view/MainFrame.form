@@ -87,7 +87,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/resources/logo.png"/>
+              <Image iconType="3" name="/resources/images/logo.png"/>
             </Property>
           </Properties>
         </Component>
@@ -241,7 +241,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/resources/admin.png"/>
+                      <Image iconType="3" name="/resources/images/admin.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -352,7 +352,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\bijen\Downloads\register.png"/>
+                      <Image iconType="3" name="/resources/images/register.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -403,7 +403,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/protection.png"/>
+                  <Image iconType="3" name="/resources/images/protection.png"/>
                 </Property>
               </Properties>
               <Constraints>
