@@ -111,31 +111,33 @@ public class MainFrame extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         headerPanel = new javax.swing.JPanel();
-        logoLabel = new javax.swing.JLabel();
         headerLabel1 = new javax.swing.JLabel();
         headerLabel2 = new javax.swing.JLabel();
+        logoLabel = new javax.swing.JLabel();
         footerPanel = new javax.swing.JPanel();
         footerLabel1 = new javax.swing.JLabel();
         footerLabel2 = new javax.swing.JLabel();
         cardPanel = new javax.swing.JPanel();
         homePanel = new javax.swing.JPanel();
         adminChoicePanel = new javax.swing.JPanel();
-        adminPhotoLabel = new javax.swing.JLabel();
         chooselogInAsAdminBtn = new javax.swing.JToggleButton();
         logInAsAdminLabel = new javax.swing.JLabel();
+        adminLogoLabel = new javax.swing.JLabel();
         choiceLabel = new javax.swing.JLabel();
         adminChoicePanel1 = new javax.swing.JPanel();
-        voterPhotoLabel = new javax.swing.JLabel();
         registerChoiceBtn = new javax.swing.JToggleButton();
         registerChoiceLabel = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         adminLoginPanel = new javax.swing.JPanel();
-        AdminLoginLabel = new javax.swing.JLabel();
-        AdminField = new javax.swing.JLabel();
-        adminIdLabel = new javax.swing.JLabel();
-        adminIdField = new javax.swing.JTextField();
-        adminPasswordLabel = new javax.swing.JLabel();
-        adminPasswordField = new javax.swing.JPasswordField();
-        adminLoginBtn = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        adminTitleLabel = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         admindashboardPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         OverviewTable = new javax.swing.JTable();
@@ -176,9 +178,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         headerPanel.setBackground(new java.awt.Color(196, 30, 58));
 
-        logoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/logo.png"))); // NOI18N
-
         headerLabel1.setFont(new java.awt.Font("Bodoni MT", 1, 48)); // NOI18N
         headerLabel1.setForeground(new java.awt.Color(255, 255, 255));
         headerLabel1.setText("National Voting Registration Portal");
@@ -188,6 +187,8 @@ public class MainFrame extends javax.swing.JFrame {
         headerLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         headerLabel2.setText("Election Commission");
 
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/logo.png"))); // NOI18N
+
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
@@ -196,23 +197,23 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(logoLabel)
                 .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(headerPanelLayout.createSequentialGroup()
-                        .addGap(95, 95, 95)
+                        .addGap(197, 197, 197)
                         .addComponent(headerLabel1)
-                        .addGap(0, 344, Short.MAX_VALUE))
+                        .addContainerGap(242, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(headerLabel2)
-                        .addGap(299, 299, 299))))
+                        .addGap(408, 408, 408))))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(17, 17, 17)
                 .addComponent(headerLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(headerLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
         );
 
         getContentPane().add(headerPanel, java.awt.BorderLayout.PAGE_START);
@@ -241,9 +242,6 @@ public class MainFrame extends javax.swing.JFrame {
         adminChoicePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(220, 220, 230), 5));
         adminChoicePanel.setMinimumSize(new java.awt.Dimension(400, 400));
 
-        adminPhotoLabel.setBackground(new java.awt.Color(255, 255, 255));
-        adminPhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/admin.png"))); // NOI18N
-
         chooselogInAsAdminBtn.setBackground(new java.awt.Color(220, 20, 60));
         chooselogInAsAdminBtn.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         chooselogInAsAdminBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -257,29 +255,31 @@ public class MainFrame extends javax.swing.JFrame {
         logInAsAdminLabel.setFont(new java.awt.Font("Cambria Math", 1, 24)); // NOI18N
         logInAsAdminLabel.setText("Log In As Admin");
 
+        adminLogoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/admin.png"))); // NOI18N
+
         javax.swing.GroupLayout adminChoicePanelLayout = new javax.swing.GroupLayout(adminChoicePanel);
         adminChoicePanel.setLayout(adminChoicePanelLayout);
         adminChoicePanelLayout.setHorizontalGroup(
             adminChoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminChoicePanelLayout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addGroup(adminChoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(logInAsAdminLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adminPhotoLabel))
-                .addGap(94, 94, 94))
             .addGroup(adminChoicePanelLayout.createSequentialGroup()
                 .addGap(119, 119, 119)
                 .addComponent(chooselogInAsAdminBtn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminChoicePanelLayout.createSequentialGroup()
+                .addContainerGap(96, Short.MAX_VALUE)
+                .addGroup(adminChoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(adminLogoLabel)
+                    .addComponent(logInAsAdminLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(94, 94, 94))
         );
         adminChoicePanelLayout.setVerticalGroup(
             adminChoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adminChoicePanelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(logInAsAdminLabel)
-                .addGap(43, 43, 43)
-                .addComponent(adminPhotoLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
+                .addComponent(adminLogoLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(chooselogInAsAdminBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
@@ -306,9 +306,6 @@ public class MainFrame extends javax.swing.JFrame {
         adminChoicePanel1.setMinimumSize(new java.awt.Dimension(400, 400));
         adminChoicePanel1.setPreferredSize(new java.awt.Dimension(400, 400));
 
-        voterPhotoLabel.setBackground(new java.awt.Color(255, 255, 255));
-        voterPhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/register.png"))); // NOI18N
-
         registerChoiceBtn.setBackground(new java.awt.Color(220, 20, 60));
         registerChoiceBtn.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         registerChoiceBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -322,32 +319,36 @@ public class MainFrame extends javax.swing.JFrame {
         registerChoiceLabel.setFont(new java.awt.Font("Cambria Math", 1, 24)); // NOI18N
         registerChoiceLabel.setText("Register As a Voter");
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/register.png"))); // NOI18N
+
         javax.swing.GroupLayout adminChoicePanel1Layout = new javax.swing.GroupLayout(adminChoicePanel1);
         adminChoicePanel1.setLayout(adminChoicePanel1Layout);
         adminChoicePanel1Layout.setHorizontalGroup(
             adminChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adminChoicePanel1Layout.createSequentialGroup()
-                .addGroup(adminChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(adminChoicePanel1Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addGroup(adminChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(registerChoiceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(voterPhotoLabel)))
-                    .addGroup(adminChoicePanel1Layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(registerChoiceBtn)))
+                .addGap(105, 105, 105)
+                .addComponent(registerChoiceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminChoicePanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(adminChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminChoicePanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(51, 51, 51))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminChoicePanel1Layout.createSequentialGroup()
+                        .addComponent(registerChoiceBtn)
+                        .addGap(138, 138, 138))))
         );
         adminChoicePanel1Layout.setVerticalGroup(
             adminChoicePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adminChoicePanel1Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(registerChoiceLabel)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(voterPhotoLabel)
-                .addGap(27, 27, 27)
                 .addComponent(registerChoiceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(24, 24, 24))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -365,58 +366,61 @@ public class MainFrame extends javax.swing.JFrame {
         adminLoginPanel.setBackground(new java.awt.Color(248, 245, 250));
         adminLoginPanel.setLayout(new java.awt.GridBagLayout());
 
-        AdminLoginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        AdminLoginLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/protection.png"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(14, 101, 34, 0);
-        adminLoginPanel.add(AdminLoginLabel, gridBagConstraints);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/protection.png"))); // NOI18N
+        jLabel5.setText("protectionLogoLabel");
 
-        AdminField.setFont(new java.awt.Font("DejaVu Serif", 0, 80)); // NOI18N
-        AdminField.setText("Admin Login");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
-        adminLoginPanel.add(AdminField, gridBagConstraints);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
 
-        adminIdLabel.setFont(new java.awt.Font("sansserif", 0, 50)); // NOI18N
-        adminIdLabel.setText("Admin ID");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        adminLoginPanel.add(adminIdLabel, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 50);
+        adminLoginPanel.add(jPanel1, gridBagConstraints);
 
-        adminIdField.setPreferredSize(new java.awt.Dimension(200, 50));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 30, 0);
-        adminLoginPanel.add(adminIdField, gridBagConstraints);
+        jPanel3.setLayout(new java.awt.GridBagLayout());
 
-        adminPasswordLabel.setFont(new java.awt.Font("sansserif", 0, 50)); // NOI18N
-        adminPasswordLabel.setText("Password");
+        adminTitleLabel.setText("ADMIN");
+        jPanel3.add(adminTitleLabel, new java.awt.GridBagConstraints());
+
+        jLabel4.setText("jLabel4");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        jPanel3.add(jLabel4, gridBagConstraints);
+
+        jTextField1.setText("jTextField1");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 3;
+        jPanel3.add(jTextField1, gridBagConstraints);
+
+        jLabel6.setText("jLabel6");
+        gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 4;
-        adminLoginPanel.add(adminPasswordLabel, gridBagConstraints);
+        jPanel3.add(jLabel6, gridBagConstraints);
 
-        adminPasswordField.setPreferredSize(new java.awt.Dimension(200, 50));
+        jTextField2.setText("jTextField2");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
-        adminLoginPanel.add(adminPasswordField, gridBagConstraints);
+        jPanel3.add(jTextField2, gridBagConstraints);
 
-        adminLoginBtn.setFont(new java.awt.Font("sansserif", 0, 30)); // NOI18N
-        adminLoginBtn.setText("Log In");
-        adminLoginBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adminLoginBtnActionPerformed(evt);
-            }
-        });
+        jButton1.setText("jButton1");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        adminLoginPanel.add(adminLoginBtn, gridBagConstraints);
+        gridBagConstraints.gridy = 7;
+        jPanel3.add(jButton1, gridBagConstraints);
+
+        adminLoginPanel.add(jPanel3, new java.awt.GridBagConstraints());
 
         cardPanel.add(adminLoginPanel, "adminLogin");
 
@@ -711,26 +715,6 @@ public class MainFrame extends javax.swing.JFrame {
         showCard("registrationPanel");
     }//GEN-LAST:event_registerChoiceBtnActionPerformed
 
-    private void adminLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLoginBtnActionPerformed
-        // TODO add your handling code here:
-        // verifies admin
-        
-        String adminId = adminIdField.getText().trim();
-        String password = new String(adminPasswordField.getPassword());
-        
-        if (adminId.isEmpty() || password.isEmpty()) {
-            showError("Please enter Admin ID and Password");
-            return;
-        }
-        
-        boolean success = adminController.login(adminId, password);
-        
-        if (success) {
-            JOptionPane.showMessageDialog(this, "Login Successful! Welcome Admin.", "Access Granted", JOptionPane.INFORMATION_MESSAGE);
-            showCard("adminDashboard");
-        }
-    }//GEN-LAST:event_adminLoginBtnActionPerformed
-
     private void sortByAgebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortByAgebtnActionPerformed
         // TODO add your handling code here:
         ArrayList<CitizenModel> citizens = (ArrayList<CitizenModel>) citizenRegistry.getAllCitizens();
@@ -871,20 +855,14 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AdminField;
-    private javax.swing.JLabel AdminLoginLabel;
     private javax.swing.JLabel DOBLabel;
     private javax.swing.JTable OverviewTable;
     private javax.swing.JButton SortByNameBtn;
     private javax.swing.JPanel adminChoicePanel;
     private javax.swing.JPanel adminChoicePanel1;
-    private javax.swing.JTextField adminIdField;
-    private javax.swing.JLabel adminIdLabel;
-    private javax.swing.JButton adminLoginBtn;
     private javax.swing.JPanel adminLoginPanel;
-    private javax.swing.JPasswordField adminPasswordField;
-    private javax.swing.JLabel adminPasswordLabel;
-    private javax.swing.JLabel adminPhotoLabel;
+    private javax.swing.JLabel adminLogoLabel;
+    private javax.swing.JLabel adminTitleLabel;
     private javax.swing.JPanel admindashboardPanel;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JLabel choiceLabel;
@@ -904,9 +882,18 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel headerLabel2;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JPanel homePanel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel logInAsAdminLabel;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JComboBox<String> monthCombo;
@@ -925,7 +912,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton updateCitizenBtn;
     private javax.swing.JTextField voteCenterField;
     private javax.swing.JLabel voteCenterLabel;
-    private javax.swing.JLabel voterPhotoLabel;
     private javax.swing.JComboBox<String> yearCombo;
     // End of variables declaration//GEN-END:variables
 }
