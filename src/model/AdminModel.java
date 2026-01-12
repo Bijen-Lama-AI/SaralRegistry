@@ -80,7 +80,7 @@ public class AdminModel {
         }
         
         if (!(obj instanceof AdminModel)) {
-            return true;
+            return false;
         }
         
         AdminModel other = (AdminModel) obj;

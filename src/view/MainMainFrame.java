@@ -4,14 +4,22 @@
  */
 package view;
 
-import java.awt.CardLayout;
+import java.awt.*;
 import javax.swing.*;
+import controller.AdminController;
+import model.AdminModel;
+import model.AdminRegistryModel;
+import model.CitizenRegistryModel;
 
 /**
  *
  * @author bijen
  */
 public class MainMainFrame extends javax.swing.JFrame {
+    
+    private AdminController adminController;
+    private AdminRegistryModel adminRegistry;
+    private CitizenRegistryModel citizenRegistry;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainMainFrame.class.getName());
 
@@ -20,6 +28,11 @@ public class MainMainFrame extends javax.swing.JFrame {
      */
     public MainMainFrame() {
         initComponents();
+        
+        adminRegistry = new AdminRegistryModel();
+        citizenRegistry = new CitizenRegistryModel();
+        
+        adminController = new AdminController(adminRegistry, citizenRegistry, null);
         
         CardLayout cl = (CardLayout) cardPanel.getLayout();
         cl.show(cardPanel, "loading");
@@ -42,10 +55,35 @@ public class MainMainFrame extends javax.swing.JFrame {
         authorLabel = new javax.swing.JLabel();
         loadingLabel = new javax.swing.JLabel();
         loadingValue = new javax.swing.JLabel();
+        mainContentPanel = new javax.swing.JPanel();
+        headerPanel = new javax.swing.JPanel();
+        logoPanel = new view.BackgroundPanel("/assets/images/Logo.png", view.BackgroundPanel.ScaleMode.FILL);
+        headerContainer = new javax.swing.JPanel();
+        headerLabel = new javax.swing.JLabel();
+        subHeaderLabel = new javax.swing.JLabel();
+        footerPanel = new javax.swing.JPanel();
+        footerLabel1 = new javax.swing.JLabel();
+        footerLabel2 = new javax.swing.JLabel();
+        contentPanel = new javax.swing.JPanel();
         selectRolePanel = new javax.swing.JPanel();
+        selectRoleLabel = new javax.swing.JLabel();
+        adminImg = new view.BackgroundPanel("/assets/images/admin.png", view.BackgroundPanel.ScaleMode.FILL);
+        citizenImg = new view.BackgroundPanel("/assets/images/register.png", view.BackgroundPanel.ScaleMode.FILL);
+        adminChoiceBtn = new javax.swing.JButton();
+        citizenChoiceBtn = new javax.swing.JButton();
+        adminLoginPanel = new javax.swing.JPanel();
+        backgroundPanel1 = new view.BackgroundPanel("/assets/images/protection.png", view.BackgroundPanel.ScaleMode.CENTER);
+        adminIdLabel = new javax.swing.JLabel();
+        adminIdField = new javax.swing.JTextField();
+        adminPasswordLabel = new javax.swing.JLabel();
+        adminPasswordField = new javax.swing.JPasswordField();
+        adminLoginLabel = new javax.swing.JLabel();
+        forgetBtn = new javax.swing.JButton();
+        logInBtn = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 500));
+        setTitle("Saral Registry");
 
         cardPanel.setPreferredSize(new java.awt.Dimension(900, 500));
         cardPanel.setLayout(new java.awt.CardLayout());
@@ -77,11 +115,13 @@ public class MainMainFrame extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         loadingPanel.add(authorLabel, gridBagConstraints);
 
+        loadingLabel.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         loadingLabel.setText("Loading...........");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 3;
         loadingPanel.add(loadingLabel, gridBagConstraints);
 
+        loadingValue.setFont(new java.awt.Font("Vivaldi", 0, 18)); // NOI18N
         loadingValue.setText("0%");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -90,18 +130,271 @@ public class MainMainFrame extends javax.swing.JFrame {
 
         cardPanel.add(loadingPanel, "loading");
 
-        javax.swing.GroupLayout selectRolePanelLayout = new javax.swing.GroupLayout(selectRolePanel);
-        selectRolePanel.setLayout(selectRolePanelLayout);
-        selectRolePanelLayout.setHorizontalGroup(
-            selectRolePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        mainContentPanel.setMinimumSize(new java.awt.Dimension(900, 500));
+        mainContentPanel.setLayout(new java.awt.BorderLayout());
+
+        headerPanel.setBackground(new java.awt.Color(220, 20, 20));
+        headerPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
+        logoPanel.setLayout(logoPanelLayout);
+        logoPanelLayout.setHorizontalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
-        selectRolePanelLayout.setVerticalGroup(
-            selectRolePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        logoPanelLayout.setVerticalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        cardPanel.add(selectRolePanel, "selectRole");
+        headerPanel.add(logoPanel);
+
+        headerContainer.setBackground(new java.awt.Color(220, 20, 20));
+        headerContainer.setLayout(new java.awt.GridBagLayout());
+
+        headerLabel.setBackground(new java.awt.Color(220, 20, 20));
+        headerLabel.setFont(new java.awt.Font("SimSun", 1, 36)); // NOI18N
+        headerLabel.setForeground(new java.awt.Color(255, 255, 255));
+        headerLabel.setText("National Voter Registration Portal");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        headerContainer.add(headerLabel, gridBagConstraints);
+
+        subHeaderLabel.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        subHeaderLabel.setForeground(new java.awt.Color(255, 255, 255));
+        subHeaderLabel.setText("Election Commission");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        headerContainer.add(subHeaderLabel, gridBagConstraints);
+
+        headerPanel.add(headerContainer);
+
+        mainContentPanel.add(headerPanel, java.awt.BorderLayout.PAGE_START);
+
+        footerPanel.setBackground(new java.awt.Color(0, 56, 147));
+        footerPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        footerPanel.setLayout(new java.awt.GridBagLayout());
+
+        footerLabel1.setFont(new java.awt.Font("Serif", 1, 30)); // NOI18N
+        footerLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        footerLabel1.setText("Email: system@electioncommission.gov");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 50);
+        footerPanel.add(footerLabel1, gridBagConstraints);
+
+        footerLabel2.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        footerLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        footerLabel2.setText("Contact: +977 01 5553000");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        footerPanel.add(footerLabel2, gridBagConstraints);
+
+        mainContentPanel.add(footerPanel, java.awt.BorderLayout.PAGE_END);
+
+        contentPanel.setLayout(new java.awt.CardLayout());
+
+        selectRolePanel.setBackground(new java.awt.Color(255, 255, 255));
+        selectRolePanel.setPreferredSize(new java.awt.Dimension(900, 500));
+        selectRolePanel.setLayout(new java.awt.GridBagLayout());
+
+        selectRoleLabel.setFont(new java.awt.Font("SimSun", 1, 48)); // NOI18N
+        selectRoleLabel.setText("Select Your Role");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 50, 0);
+        selectRolePanel.add(selectRoleLabel, gridBagConstraints);
+
+        adminImg.setBackground(new java.awt.Color(255, 255, 255));
+        adminImg.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        adminImg.setPreferredSize(new java.awt.Dimension(200, 200));
+
+        javax.swing.GroupLayout adminImgLayout = new javax.swing.GroupLayout(adminImg);
+        adminImg.setLayout(adminImgLayout);
+        adminImgLayout.setHorizontalGroup(
+            adminImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        adminImgLayout.setVerticalGroup(
+            adminImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 196, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        selectRolePanel.add(adminImg, gridBagConstraints);
+
+        citizenImg.setBackground(new java.awt.Color(255, 255, 255));
+        citizenImg.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        citizenImg.setPreferredSize(new java.awt.Dimension(200, 200));
+
+        javax.swing.GroupLayout citizenImgLayout = new javax.swing.GroupLayout(citizenImg);
+        citizenImg.setLayout(citizenImgLayout);
+        citizenImgLayout.setHorizontalGroup(
+            citizenImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        citizenImgLayout.setVerticalGroup(
+            citizenImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 196, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        selectRolePanel.add(citizenImg, gridBagConstraints);
+
+        adminChoiceBtn.setFont(new java.awt.Font("SimSun", 1, 24)); // NOI18N
+        adminChoiceBtn.setText("Admin ");
+        adminChoiceBtn.setName(""); // NOI18N
+        adminChoiceBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminChoiceBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
+        selectRolePanel.add(adminChoiceBtn, gridBagConstraints);
+
+        citizenChoiceBtn.setFont(new java.awt.Font("SimSun", 1, 24)); // NOI18N
+        citizenChoiceBtn.setText("Citizen");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
+        selectRolePanel.add(citizenChoiceBtn, gridBagConstraints);
+
+        contentPanel.add(selectRolePanel, "selectRole");
+
+        adminLoginPanel.setBackground(new java.awt.Color(255, 255, 255));
+        adminLoginPanel.setPreferredSize(new java.awt.Dimension(900, 500));
+        adminLoginPanel.setLayout(new java.awt.GridBagLayout());
+
+        backgroundPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        backgroundPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        backgroundPanel1.setPreferredSize(new java.awt.Dimension(200, 200));
+
+        javax.swing.GroupLayout backgroundPanel1Layout = new javax.swing.GroupLayout(backgroundPanel1);
+        backgroundPanel1.setLayout(backgroundPanel1Layout);
+        backgroundPanel1Layout.setHorizontalGroup(
+            backgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        backgroundPanel1Layout.setVerticalGroup(
+            backgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 333, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 64);
+        adminLoginPanel.add(backgroundPanel1, gridBagConstraints);
+
+        adminIdLabel.setFont(new java.awt.Font("Thames", 0, 36)); // NOI18N
+        adminIdLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        adminIdLabel.setText("Admin Id");
+        adminIdLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        adminLoginPanel.add(adminIdLabel, gridBagConstraints);
+
+        adminIdField.setPreferredSize(new java.awt.Dimension(150, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 30, 0);
+        adminLoginPanel.add(adminIdField, gridBagConstraints);
+
+        adminPasswordLabel.setFont(new java.awt.Font("Thames", 0, 36)); // NOI18N
+        adminPasswordLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        adminPasswordLabel.setText("Password");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        adminLoginPanel.add(adminPasswordLabel, gridBagConstraints);
+
+        adminPasswordField.setPreferredSize(new java.awt.Dimension(150, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        adminLoginPanel.add(adminPasswordField, gridBagConstraints);
+
+        adminLoginLabel.setFont(new java.awt.Font("Thames", 1, 100)); // NOI18N
+        adminLoginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        adminLoginLabel.setText("Admin Login");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 25, 0);
+        adminLoginPanel.add(adminLoginLabel, gridBagConstraints);
+
+        forgetBtn.setBackground(new java.awt.Color(242, 242, 242));
+        forgetBtn.setText("Forget Password? Click Here");
+        forgetBtn.setBorder(null);
+        forgetBtn.setBorderPainted(false);
+        forgetBtn.setContentAreaFilled(false);
+        forgetBtn.setPreferredSize(new java.awt.Dimension(165, 30));
+        forgetBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                forgetBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        adminLoginPanel.add(forgetBtn, gridBagConstraints);
+
+        logInBtn.setText("Log In");
+        logInBtn.setPreferredSize(new java.awt.Dimension(150, 30));
+        logInBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logInBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 0);
+        adminLoginPanel.add(logInBtn, gridBagConstraints);
+
+        backBtn.setText("Back");
+        backBtn.setPreferredSize(new java.awt.Dimension(150, 30));
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        adminLoginPanel.add(backBtn, gridBagConstraints);
+
+        contentPanel.add(adminLoginPanel, "adminLogin");
+
+        mainContentPanel.add(contentPanel, java.awt.BorderLayout.CENTER);
+
+        cardPanel.add(mainContentPanel, "mainContent");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,6 +411,176 @@ public class MainMainFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void adminChoiceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminChoiceBtnActionPerformed
+        // TODO add your handling code here:
+       CardLayout cl = (CardLayout) contentPanel.getLayout();
+       cl.show(contentPanel, "adminLogin");     
+    }//GEN-LAST:event_adminChoiceBtnActionPerformed
+
+    private void forgetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgetBtnActionPerformed
+        // TODO add your handling code here:
+        forgetBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        forgetBtn.setForeground(new Color(0, 102, 204));
+        
+        try {
+           String adminId = JOptionPane.showInputDialog(this, "Enter your Admin ID: ", "Password Reset - Verify Identity", JOptionPane.QUESTION_MESSAGE);
+           
+           if (adminId == null) {
+               return;
+           }
+           
+           if (adminId.trim().isEmpty()) {
+               JOptionPane.showMessageDialog(this, "Admin ID cannot be empty.", "Input Required", JOptionPane.WARNING_MESSAGE);
+               return;
+           }
+           
+           if (!adminRegistry.adminExists(adminId.trim())) {
+               JOptionPane.showMessageDialog(this, "Admin ID not Found. \nPlease check your Admin ID and try again.", "Admin Not Found", JOptionPane.ERROR_MESSAGE);
+               return;
+           }
+           
+           JPasswordField newPasswordField = new JPasswordField(20);
+           Object[] message1 = {"Enter your new password:", "(Must be at least 8 characters)", newPasswordField};
+           
+           int option1 = JOptionPane.showConfirmDialog(this, message1, "Password Reset - New Password", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+           
+           if (option1 != JOptionPane.OK_OPTION) {
+               return;
+           }
+           
+           String newPassword = new String(newPasswordField.getPassword());
+           
+           if (newPassword.trim().isEmpty()) {
+               JOptionPane.showMessageDialog(this, "Password cannot b empty.", "Input Required", JOptionPane.WARNING_MESSAGE);
+               return;
+           }
+           
+           if (newPassword.trim().length() < 8) {
+               JOptionPane.showMessageDialog(this, "Password must be at least 8 characters long.", "Password too short", JOptionPane.WARNING_MESSAGE);
+               return;
+           }
+           
+           JPasswordField confirmPasswordField = new JPasswordField(20);
+           Object[] message2 = {"Confirm your nw password:", confirmPasswordField};
+           
+           int option2 = JOptionPane.showConfirmDialog(this, message2, "Password Reset - Confirm Password", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+           
+           if (option2 != JOptionPane.OK_OPTION) {
+               return;
+            }
+           String confirmPassword = new String(confirmPasswordField.getPassword());
+           
+           if (!newPassword.equals(confirmPassword)) {
+               JOptionPane.showMessageDialog(this, "Passwords do not match.", "Password Mismatch", JOptionPane.ERROR_MESSAGE);
+               return;
+           }
+           
+           boolean removed = adminRegistry.removeAdmin(adminId.trim());
+           
+           if (!removed) {
+               JOptionPane.showMessageDialog(this, "Failed to reset password.", "Reset Failed", JOptionPane.ERROR_MESSAGE);
+               return;
+           }
+           
+           AdminModel newAdmin = new AdminModel(adminId.trim(), newPassword.trim());
+           adminRegistry.addAdmin(newAdmin);
+           
+           JOptionPane.showMessageDialog(this, "Password reset successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+       } catch (IllegalArgumentException e) {
+           JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Reset Failed", JOptionPane.ERROR_MESSAGE);
+       } catch (NullPointerException e) {
+           JOptionPane.showMessageDialog(this, "System Error: Admin Registry not initialized", "System Error", JOptionPane.ERROR_MESSAGE);
+       } catch (Exception e) {
+           JOptionPane.showMessageDialog(this, "An unexpected error occured. \nPlease try again.", "Error", JOptionPane.ERROR_MESSAGE);
+       }
+    }//GEN-LAST:event_forgetBtnActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) contentPanel.getLayout();
+        cl.show(contentPanel, "selectRole");
+    }//GEN-LAST:event_backBtnActionPerformed
+
+    private void logInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInBtnActionPerformed
+        // TODO add your handling code here:
+        try {
+            String adminId = adminIdField.getText().trim();
+            String password = new String(adminPasswordField.getPassword()).trim();
+            
+            if (!validateLoginInput(adminId, password)) {
+                return;
+            }
+            
+            boolean loginSuccess = adminController.login(adminId, password);
+            
+            if (loginSuccess) {
+                JOptionPane.showMessageDialog(this, "Login Successful! Welcome, " + adminId.trim(), "Success", JOptionPane.INFORMATION_MESSAGE);
+                
+                try {
+                    if (adminIdField != null) {
+                        adminIdField.setText("");
+                    }
+                    if (adminPasswordField != null) {
+                        adminPasswordField.setText("");
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                
+                CardLayout cl = (CardLayout) contentPanel.getLayout();
+                cl.show(contentPanel, "selectRole");
+                
+            }else {
+                JOptionPane.showMessageDialog(this, "Invalid Admin ID or Password. \nPlease try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                
+                adminPasswordField.setText("");
+                adminPasswordField.requestFocus();
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(this, "System error: Missing required components. \nPlease restart the application.", "System Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, "Invalid input: " + e.getMessage(), "Validation Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_logInBtnActionPerformed
+
+    /**
+     * 
+     */
+    private boolean validateLoginInput(String adminId, String password) {
+        if (adminId == null || password == null) {
+            JOptionPane.showMessageDialog(this, "Please enter ID and Password", "System Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        String trimmedId = adminId.trim();
+        String trimmedPassword = password.trim();
+        
+        if (trimmedId.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Admin ID cannot be empty. \nPlease enter your Admin ID.", "Input Required.", JOptionPane.WARNING_MESSAGE);
+            adminIdField.requestFocus();
+            return false;
+        }
+        
+        if (trimmedPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Password cannot be empty. \nPlease enter your password.", "Input Required.", JOptionPane.WARNING_MESSAGE);
+            adminPasswordField.requestFocus();
+            return false;
+        }
+        if (adminId.trim().isEmpty() || password.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter your crdentials.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    
+    public void showError(String message) {
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Information", JOptionPane.INFORMATION_MESSAGE);
+    }
     /**
      * @param args the command line arguments
      */
@@ -149,7 +612,7 @@ public class MainMainFrame extends javax.swing.JFrame {
         new Thread(() -> {
             try {
                 for (int i = 0; i <= 100; i++) {
-                    Thread.sleep(50); // Adjust speed here (lower = faster)
+                    Thread.sleep(20); // Adjust speed here (lower = faster)
                     
                     final int progress = i;
                     String message;
@@ -187,19 +650,44 @@ public class MainMainFrame extends javax.swing.JFrame {
     
     public void showMainContent() {
         CardLayout cl = (CardLayout) cardPanel.getLayout();
-        cl.show(cardPanel, "selectRole");
+        cl.show(cardPanel, "mainContent");
     }
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adminChoiceBtn;
+    private javax.swing.JTextField adminIdField;
+    private javax.swing.JLabel adminIdLabel;
+    private view.BackgroundPanel adminImg;
+    private javax.swing.JLabel adminLoginLabel;
+    private javax.swing.JPanel adminLoginPanel;
+    private javax.swing.JPasswordField adminPasswordField;
+    private javax.swing.JLabel adminPasswordLabel;
     private javax.swing.JLabel authorLabel;
+    private javax.swing.JButton backBtn;
+    private view.BackgroundPanel backgroundPanel1;
     private javax.swing.JPanel cardPanel;
+    private javax.swing.JButton citizenChoiceBtn;
+    private view.BackgroundPanel citizenImg;
+    private javax.swing.JPanel contentPanel;
+    private javax.swing.JLabel footerLabel1;
+    private javax.swing.JLabel footerLabel2;
+    private javax.swing.JPanel footerPanel;
+    private javax.swing.JButton forgetBtn;
+    private javax.swing.JPanel headerContainer;
+    private javax.swing.JLabel headerLabel;
+    private javax.swing.JPanel headerPanel;
     private javax.swing.JProgressBar loadingBar;
     private javax.swing.JLabel loadingLabel;
     private view.BackgroundPanel loadingPanel;
     private javax.swing.JLabel loadingValue;
+    private javax.swing.JButton logInBtn;
+    private view.BackgroundPanel logoPanel;
+    private javax.swing.JPanel mainContentPanel;
     private javax.swing.JLabel quoteLabel;
+    private javax.swing.JLabel selectRoleLabel;
     private javax.swing.JPanel selectRolePanel;
+    private javax.swing.JLabel subHeaderLabel;
     // End of variables declaration//GEN-END:variables
 }
