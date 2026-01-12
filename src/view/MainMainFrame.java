@@ -48,6 +48,7 @@ public class MainMainFrame extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        searchOptionGroup = new javax.swing.ButtonGroup();
         cardPanel = new javax.swing.JPanel();
         loadingPanel = new view.BackgroundPanel("/assets/images/BackgroundImage.jpg", view.BackgroundPanel.ScaleMode.FILL);
         quoteLabel = new javax.swing.JLabel();
@@ -72,7 +73,7 @@ public class MainMainFrame extends javax.swing.JFrame {
         adminChoiceBtn = new javax.swing.JButton();
         citizenChoiceBtn = new javax.swing.JButton();
         adminLoginPanel = new javax.swing.JPanel();
-        backgroundPanel1 = new view.BackgroundPanel("/assets/images/protection.png", view.BackgroundPanel.ScaleMode.CENTER);
+        protectionImg = new view.BackgroundPanel("/assets/images/protection.png", view.BackgroundPanel.ScaleMode.FILL);
         adminIdLabel = new javax.swing.JLabel();
         adminIdField = new javax.swing.JTextField();
         adminPasswordLabel = new javax.swing.JLabel();
@@ -81,9 +82,65 @@ public class MainMainFrame extends javax.swing.JFrame {
         forgetBtn = new javax.swing.JButton();
         logInBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
+        adminDashboardPanel = new javax.swing.JPanel();
+        adminHeaderPanel = new javax.swing.JPanel();
+        adminheaderLeft = new javax.swing.JPanel();
+        welcomeAdmin = new javax.swing.JLabel();
+        exitPanel = new javax.swing.JPanel();
+        logoutBtn = new javax.swing.JButton();
+        adminHeaderCenter = new javax.swing.JPanel();
+        carouselLabel = new javax.swing.JLabel();
+        adminDashboardPane = new javax.swing.JTabbedPane();
+        dashboardPane = new javax.swing.JPanel();
+        statsLabel = new javax.swing.JLabel();
+        dashboardFooterPanel = new javax.swing.JPanel();
+        searchManageBtn = new javax.swing.JButton();
+        dashboardCenterPanel = new javax.swing.JPanel();
+        dashboardPanel1 = new javax.swing.JPanel();
+        dashboardPanel2 = new javax.swing.JPanel();
+        dashboardPanel3 = new javax.swing.JPanel();
+        dashboardPanel4 = new javax.swing.JPanel();
+        dashboardPanel5 = new javax.swing.JPanel();
+        dashboardPanel6 = new javax.swing.JPanel();
+        adminManagePane = new javax.swing.JPanel();
+        manageCitizenLabel = new javax.swing.JLabel();
+        manageCitizenFooterPanel = new javax.swing.JPanel();
+        addBtn = new javax.swing.JButton();
+        viewBtn = new javax.swing.JButton();
+        editBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
+        approveBtn = new javax.swing.JButton();
+        rejectBtn = new javax.swing.JButton();
+        refreshManageBtn = new javax.swing.JButton();
+        citizenRecordPane = new javax.swing.JScrollPane();
+        citizensTable = new javax.swing.JTable();
+        SearchPane = new javax.swing.JPanel();
+        searchHeader = new javax.swing.JPanel();
+        citizenshipNoBtn = new javax.swing.JRadioButton();
+        nameBtn = new javax.swing.JRadioButton();
+        phoneNumberBtn = new javax.swing.JRadioButton();
+        searchField = new javax.swing.JTextField();
+        linearSearchBtn = new javax.swing.JButton();
+        binarySearchBtn = new javax.swing.JButton();
+        searchScrollPane = new javax.swing.JScrollPane();
+        detailsTextarea = new javax.swing.JTextArea();
+        sortPane = new javax.swing.JPanel();
+        sortHeader = new javax.swing.JPanel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Saral Registry");
+        setPreferredSize(new java.awt.Dimension(900, 700));
 
         cardPanel.setPreferredSize(new java.awt.Dimension(900, 500));
         cardPanel.setLayout(new java.awt.CardLayout());
@@ -225,7 +282,7 @@ public class MainMainFrame extends javax.swing.JFrame {
         );
         adminImgLayout.setVerticalGroup(
             adminImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 196, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -246,7 +303,7 @@ public class MainMainFrame extends javax.swing.JFrame {
         );
         citizenImgLayout.setVerticalGroup(
             citizenImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 196, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -284,18 +341,18 @@ public class MainMainFrame extends javax.swing.JFrame {
         adminLoginPanel.setPreferredSize(new java.awt.Dimension(900, 500));
         adminLoginPanel.setLayout(new java.awt.GridBagLayout());
 
-        backgroundPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        backgroundPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        backgroundPanel1.setPreferredSize(new java.awt.Dimension(200, 200));
+        protectionImg.setBackground(new java.awt.Color(255, 255, 255));
+        protectionImg.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        protectionImg.setPreferredSize(new java.awt.Dimension(250, 200));
 
-        javax.swing.GroupLayout backgroundPanel1Layout = new javax.swing.GroupLayout(backgroundPanel1);
-        backgroundPanel1.setLayout(backgroundPanel1Layout);
-        backgroundPanel1Layout.setHorizontalGroup(
-            backgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout protectionImgLayout = new javax.swing.GroupLayout(protectionImg);
+        protectionImg.setLayout(protectionImgLayout);
+        protectionImgLayout.setHorizontalGroup(
+            protectionImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        backgroundPanel1Layout.setVerticalGroup(
-            backgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        protectionImgLayout.setVerticalGroup(
+            protectionImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 333, Short.MAX_VALUE)
         );
 
@@ -306,7 +363,7 @@ public class MainMainFrame extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 64);
-        adminLoginPanel.add(backgroundPanel1, gridBagConstraints);
+        adminLoginPanel.add(protectionImg, gridBagConstraints);
 
         adminIdLabel.setFont(new java.awt.Font("Thames", 0, 36)); // NOI18N
         adminIdLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -391,6 +448,284 @@ public class MainMainFrame extends javax.swing.JFrame {
         adminLoginPanel.add(backBtn, gridBagConstraints);
 
         contentPanel.add(adminLoginPanel, "adminLogin");
+
+        adminDashboardPanel.setLayout(new java.awt.BorderLayout());
+
+        adminHeaderPanel.setBackground(new java.awt.Color(255, 255, 255));
+        adminHeaderPanel.setPreferredSize(new java.awt.Dimension(0, 120));
+        adminHeaderPanel.setLayout(new java.awt.BorderLayout());
+
+        adminheaderLeft.setBackground(new java.awt.Color(255, 255, 255));
+
+        welcomeAdmin.setFont(new java.awt.Font("SimSun", 1, 28)); // NOI18N
+        welcomeAdmin.setText("Welcome, Admin!");
+        adminheaderLeft.add(welcomeAdmin);
+
+        adminHeaderPanel.add(adminheaderLeft, java.awt.BorderLayout.LINE_START);
+
+        exitPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        logoutBtn.setBackground(new java.awt.Color(255, 51, 51));
+        logoutBtn.setText("Logout");
+        logoutBtn.setPreferredSize(new java.awt.Dimension(72, 30));
+        exitPanel.add(logoutBtn);
+
+        adminHeaderPanel.add(exitPanel, java.awt.BorderLayout.LINE_END);
+
+        adminHeaderCenter.setBackground(new java.awt.Color(255, 255, 255));
+        adminHeaderCenter.setLayout(new java.awt.GridBagLayout());
+
+        carouselLabel.setFont(new java.awt.Font("SimSun", 1, 20)); // NOI18N
+        carouselLabel.setText("Loading.......");
+        adminHeaderCenter.add(carouselLabel, new java.awt.GridBagConstraints());
+
+        adminHeaderPanel.add(adminHeaderCenter, java.awt.BorderLayout.CENTER);
+
+        adminDashboardPanel.add(adminHeaderPanel, java.awt.BorderLayout.PAGE_START);
+
+        adminDashboardPane.setBackground(new java.awt.Color(255, 255, 255));
+
+        dashboardPane.setLayout(new java.awt.BorderLayout());
+
+        statsLabel.setBackground(new java.awt.Color(255, 255, 255));
+        statsLabel.setFont(new java.awt.Font("SimSun", 1, 28)); // NOI18N
+        statsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        statsLabel.setText("Statistics Overview");
+        dashboardPane.add(statsLabel, java.awt.BorderLayout.PAGE_START);
+
+        dashboardFooterPanel.setBackground(new java.awt.Color(255, 255, 255));
+        dashboardFooterPanel.setLayout(new java.awt.GridBagLayout());
+
+        searchManageBtn.setText("Refresh");
+        searchManageBtn.setPreferredSize(new java.awt.Dimension(150, 30));
+        dashboardFooterPanel.add(searchManageBtn, new java.awt.GridBagConstraints());
+
+        dashboardPane.add(dashboardFooterPanel, java.awt.BorderLayout.PAGE_END);
+
+        dashboardCenterPanel.setLayout(new java.awt.GridLayout(2, 3, 15, 15));
+
+        dashboardPanel1.setLayout(new java.awt.BorderLayout());
+        dashboardCenterPanel.add(dashboardPanel1);
+
+        dashboardPanel2.setLayout(new java.awt.BorderLayout());
+        dashboardCenterPanel.add(dashboardPanel2);
+
+        dashboardPanel3.setLayout(new java.awt.BorderLayout());
+        dashboardCenterPanel.add(dashboardPanel3);
+
+        dashboardPanel4.setLayout(new java.awt.BorderLayout());
+        dashboardCenterPanel.add(dashboardPanel4);
+
+        dashboardPanel5.setLayout(new java.awt.BorderLayout());
+        dashboardCenterPanel.add(dashboardPanel5);
+
+        dashboardPanel6.setLayout(new java.awt.BorderLayout());
+        dashboardCenterPanel.add(dashboardPanel6);
+
+        dashboardPane.add(dashboardCenterPanel, java.awt.BorderLayout.CENTER);
+
+        adminDashboardPane.addTab("Dashboard", dashboardPane);
+
+        adminManagePane.setLayout(new java.awt.BorderLayout());
+
+        manageCitizenLabel.setBackground(new java.awt.Color(255, 255, 255));
+        manageCitizenLabel.setFont(new java.awt.Font("SimSun", 1, 36)); // NOI18N
+        manageCitizenLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        manageCitizenLabel.setText("Manage Citizen Records");
+        adminManagePane.add(manageCitizenLabel, java.awt.BorderLayout.PAGE_START);
+
+        manageCitizenFooterPanel.setLayout(new java.awt.GridLayout());
+
+        addBtn.setText("Add");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
+        manageCitizenFooterPanel.add(addBtn);
+
+        viewBtn.setText("View");
+        viewBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewBtnActionPerformed(evt);
+            }
+        });
+        manageCitizenFooterPanel.add(viewBtn);
+
+        editBtn.setText("Edit");
+        manageCitizenFooterPanel.add(editBtn);
+
+        deleteBtn.setText("Delete");
+        manageCitizenFooterPanel.add(deleteBtn);
+
+        approveBtn.setText("Approve");
+        manageCitizenFooterPanel.add(approveBtn);
+
+        rejectBtn.setText("Reject");
+        manageCitizenFooterPanel.add(rejectBtn);
+
+        refreshManageBtn.setText("Refresh");
+        manageCitizenFooterPanel.add(refreshManageBtn);
+
+        adminManagePane.add(manageCitizenFooterPanel, java.awt.BorderLayout.PAGE_END);
+
+        citizensTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Citizenship No", "Full Name", "Age", "Phone", "Province", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        citizenRecordPane.setViewportView(citizensTable);
+
+        adminManagePane.add(citizenRecordPane, java.awt.BorderLayout.CENTER);
+
+        adminDashboardPane.addTab("Manage Citizens", adminManagePane);
+
+        SearchPane.setLayout(new java.awt.BorderLayout());
+
+        searchHeader.setLayout(new java.awt.GridBagLayout());
+
+        searchOptionGroup.add(citizenshipNoBtn);
+        citizenshipNoBtn.setText("Citizenship Number");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 25);
+        searchHeader.add(citizenshipNoBtn, gridBagConstraints);
+
+        searchOptionGroup.add(nameBtn);
+        nameBtn.setText("Voter Name");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 25);
+        searchHeader.add(nameBtn, gridBagConstraints);
+
+        searchOptionGroup.add(phoneNumberBtn);
+        phoneNumberBtn.setText("Phone Number");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 25);
+        searchHeader.add(phoneNumberBtn, gridBagConstraints);
+
+        searchField.setToolTipText("Enter Details");
+        searchField.setPreferredSize(new java.awt.Dimension(200, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 25);
+        searchHeader.add(searchField, gridBagConstraints);
+
+        linearSearchBtn.setText("Linear Search");
+        linearSearchBtn.setPreferredSize(new java.awt.Dimension(100, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 25);
+        searchHeader.add(linearSearchBtn, gridBagConstraints);
+
+        binarySearchBtn.setText("Binary Search");
+        binarySearchBtn.setPreferredSize(new java.awt.Dimension(101, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 25);
+        searchHeader.add(binarySearchBtn, gridBagConstraints);
+
+        SearchPane.add(searchHeader, java.awt.BorderLayout.PAGE_START);
+
+        detailsTextarea.setColumns(20);
+        detailsTextarea.setRows(5);
+        searchScrollPane.setViewportView(detailsTextarea);
+
+        SearchPane.add(searchScrollPane, java.awt.BorderLayout.CENTER);
+
+        adminDashboardPane.addTab("Search", SearchPane);
+
+        sortPane.setLayout(new java.awt.BorderLayout());
+
+        jRadioButton1.setText("Citizenship Number");
+        sortHeader.add(jRadioButton1);
+
+        jRadioButton2.setText("Name");
+        sortHeader.add(jRadioButton2);
+
+        jRadioButton3.setText("Age");
+        sortHeader.add(jRadioButton3);
+
+        jRadioButton4.setText("Ascending");
+        sortHeader.add(jRadioButton4);
+
+        jRadioButton5.setText("Descending");
+        sortHeader.add(jRadioButton5);
+
+        jButton1.setText("Sort ");
+        sortHeader.add(jButton1);
+
+        jButton2.setText("Reset");
+        sortHeader.add(jButton2);
+
+        sortPane.add(sortHeader, java.awt.BorderLayout.PAGE_START);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        sortPane.add(jPanel2, java.awt.BorderLayout.PAGE_END);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 359, Short.MAX_VALUE)
+        );
+
+        sortPane.add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        adminDashboardPane.addTab("Sort", sortPane);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 492, Short.MAX_VALUE)
+        );
+
+        adminDashboardPane.addTab("Queue", jPanel6);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 492, Short.MAX_VALUE)
+        );
+
+        adminDashboardPane.addTab("History", jPanel7);
+
+        adminDashboardPanel.add(adminDashboardPane, java.awt.BorderLayout.CENTER);
+
+        contentPanel.add(adminDashboardPanel, "adminDashboard");
 
         mainContentPanel.add(contentPanel, java.awt.BorderLayout.CENTER);
 
@@ -528,7 +863,7 @@ public class MainMainFrame extends javax.swing.JFrame {
                 }
                 
                 CardLayout cl = (CardLayout) contentPanel.getLayout();
-                cl.show(contentPanel, "selectRole");
+                cl.show(contentPanel, "adminDashboard");
                 
             }else {
                 JOptionPane.showMessageDialog(this, "Invalid Admin ID or Password. \nPlease try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
@@ -543,6 +878,14 @@ public class MainMainFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Invalid input: " + e.getMessage(), "Validation Error", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_logInBtnActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewBtnActionPerformed
 
     /**
      * 
@@ -656,21 +999,47 @@ public class MainMainFrame extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel SearchPane;
+    private javax.swing.JButton addBtn;
     private javax.swing.JButton adminChoiceBtn;
+    private javax.swing.JTabbedPane adminDashboardPane;
+    private javax.swing.JPanel adminDashboardPanel;
+    private javax.swing.JPanel adminHeaderCenter;
+    private javax.swing.JPanel adminHeaderPanel;
     private javax.swing.JTextField adminIdField;
     private javax.swing.JLabel adminIdLabel;
     private view.BackgroundPanel adminImg;
     private javax.swing.JLabel adminLoginLabel;
     private javax.swing.JPanel adminLoginPanel;
+    private javax.swing.JPanel adminManagePane;
     private javax.swing.JPasswordField adminPasswordField;
     private javax.swing.JLabel adminPasswordLabel;
+    private javax.swing.JPanel adminheaderLeft;
+    private javax.swing.JButton approveBtn;
     private javax.swing.JLabel authorLabel;
     private javax.swing.JButton backBtn;
-    private view.BackgroundPanel backgroundPanel1;
+    private javax.swing.JButton binarySearchBtn;
     private javax.swing.JPanel cardPanel;
+    private javax.swing.JLabel carouselLabel;
     private javax.swing.JButton citizenChoiceBtn;
     private view.BackgroundPanel citizenImg;
+    private javax.swing.JScrollPane citizenRecordPane;
+    private javax.swing.JTable citizensTable;
+    private javax.swing.JRadioButton citizenshipNoBtn;
     private javax.swing.JPanel contentPanel;
+    private javax.swing.JPanel dashboardCenterPanel;
+    private javax.swing.JPanel dashboardFooterPanel;
+    private javax.swing.JPanel dashboardPane;
+    private javax.swing.JPanel dashboardPanel1;
+    private javax.swing.JPanel dashboardPanel2;
+    private javax.swing.JPanel dashboardPanel3;
+    private javax.swing.JPanel dashboardPanel4;
+    private javax.swing.JPanel dashboardPanel5;
+    private javax.swing.JPanel dashboardPanel6;
+    private javax.swing.JButton deleteBtn;
+    private javax.swing.JTextArea detailsTextarea;
+    private javax.swing.JButton editBtn;
+    private javax.swing.JPanel exitPanel;
     private javax.swing.JLabel footerLabel1;
     private javax.swing.JLabel footerLabel2;
     private javax.swing.JPanel footerPanel;
@@ -678,16 +1047,46 @@ public class MainMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel headerContainer;
     private javax.swing.JLabel headerLabel;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JButton linearSearchBtn;
     private javax.swing.JProgressBar loadingBar;
     private javax.swing.JLabel loadingLabel;
     private view.BackgroundPanel loadingPanel;
     private javax.swing.JLabel loadingValue;
     private javax.swing.JButton logInBtn;
     private view.BackgroundPanel logoPanel;
+    private javax.swing.JButton logoutBtn;
     private javax.swing.JPanel mainContentPanel;
+    private javax.swing.JPanel manageCitizenFooterPanel;
+    private javax.swing.JLabel manageCitizenLabel;
+    private javax.swing.JRadioButton nameBtn;
+    private javax.swing.JRadioButton phoneNumberBtn;
+    private view.BackgroundPanel protectionImg;
     private javax.swing.JLabel quoteLabel;
+    private javax.swing.JButton refreshManageBtn;
+    private javax.swing.JButton rejectBtn;
+    private javax.swing.JTextField searchField;
+    private javax.swing.JPanel searchHeader;
+    private javax.swing.JButton searchManageBtn;
+    private javax.swing.ButtonGroup searchOptionGroup;
+    private javax.swing.JScrollPane searchScrollPane;
     private javax.swing.JLabel selectRoleLabel;
     private javax.swing.JPanel selectRolePanel;
+    private javax.swing.JPanel sortHeader;
+    private javax.swing.JPanel sortPane;
+    private javax.swing.JLabel statsLabel;
     private javax.swing.JLabel subHeaderLabel;
+    private javax.swing.JButton viewBtn;
+    private javax.swing.JLabel welcomeAdmin;
     // End of variables declaration//GEN-END:variables
 }
