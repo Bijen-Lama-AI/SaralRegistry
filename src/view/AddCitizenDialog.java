@@ -40,7 +40,8 @@ public class AddCitizenDialog extends javax.swing.JDialog {
     }
     
     public void setupComboBoxes() {
-        
+        districtComboBox.removeAllItems();
+        districtComboBox.addItem("-- Select District --");
     }
     
     public void updateDistrictComboBox() {
@@ -163,14 +164,38 @@ public class AddCitizenDialog extends javax.swing.JDialog {
             return false;
         }
         
+        // Validate citizenship number format (only digits, reasonable length)
+        String citizenship = citizenshipField.getText().trim();
+        if (!citizenship.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "Citizenship number must contain only digits!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            citizenshipField.requestFocus();
+            return false;
+        }
+        
         if (nameField.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Name is required!", "Validation Error", JOptionPane.ERROR_MESSAGE);
             nameField.requestFocus();
             return false;
         }
         
+        // Validate name contains only letters and spaces
+        String name = nameField.getText().trim();
+        if (!name.matches("[a-zA-Z\\s]+")) {
+            JOptionPane.showMessageDialog(this, "Name should contain only letters and spaces!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            nameField.requestFocus();
+            return false;
+        }
+        
         if (phoneField.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Phone number is required!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            phoneField.requestFocus();
+            return false;
+        }
+        
+        // Validate phone number (Nepal format: 10 digits starting with 9)
+        String phone = phoneField.getText().trim();
+        if (!phone.matches("9\\d{9}")) {
+            JOptionPane.showMessageDialog(this, "Phone number must be 10 digits starting with 9!", "Validation Error", JOptionPane.ERROR_MESSAGE);
             phoneField.requestFocus();
             return false;
         }
@@ -188,16 +213,31 @@ public class AddCitizenDialog extends javax.swing.JDialog {
             dobChooser.requestFocus();
             return false;
         }
-        LocalDate dob = selectedDate.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
-        LocalDate eighteenYearsAgo = LocalDate.now().minusYears(18);
-        LocalDate maxAge = LocalDate.now().minusYears(120);
         
-        if (!dob.isBefore(eighteenYearsAgo)) {
-            JOptionPane.showMessageDialog(this, "Citizen must be at least 18 years old!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        // Validate date of birth
+        LocalDate dob = selectedDate.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+        LocalDate today = LocalDate.now();
+        LocalDate eighteenYearsAgo = today.minusYears(18);
+        LocalDate maxAge = today.minusYears(120);
+        
+        // Check if date is in the future
+        if (dob.isAfter(today)) {
+            JOptionPane.showMessageDialog(this, "Date of birth cannot be in the future!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            dobChooser.requestFocus();
             return false;
         }
-        if (dob.isAfter(maxAge)) {
+        
+        // Check minimum age (18 years)
+        if (dob.isAfter(eighteenYearsAgo) || dob.isEqual(eighteenYearsAgo)) {
+            JOptionPane.showMessageDialog(this, "Citizen must be at least 18 years old!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            dobChooser.requestFocus();
+            return false;
+        }
+        
+        // Check maximum age (120 years)
+        if (dob.isBefore(maxAge)) {
             JOptionPane.showMessageDialog(this, "Age cannot exceed 120 years!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            dobChooser.requestFocus();
             return false;
         }
         
@@ -243,7 +283,7 @@ public class AddCitizenDialog extends javax.swing.JDialog {
         diagHeaderLabel = new javax.swing.JLabel();
         diagfooterPanel = new javax.swing.JPanel();
         diagSaveBtn = new javax.swing.JButton();
-        diadCancelBtn = new javax.swing.JButton();
+        diagCancelBtn = new javax.swing.JButton();
         diagCenterPanel = new javax.swing.JPanel();
         citizenshipLabel = new javax.swing.JLabel();
         citizenshipField = new javax.swing.JTextField();
@@ -266,10 +306,9 @@ public class AddCitizenDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add New Citizen Registration");
-        setPreferredSize(new java.awt.Dimension(500, 650));
 
         diagHeaderPanel.setBackground(new java.awt.Color(255, 255, 255));
-        diagHeaderPanel.setLayout(new java.awt.GridLayout());
+        diagHeaderPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         diagHeaderLabel.setBackground(new java.awt.Color(255, 255, 255));
         diagHeaderLabel.setFont(new java.awt.Font("SimSun", 1, 48)); // NOI18N
@@ -292,14 +331,14 @@ public class AddCitizenDialog extends javax.swing.JDialog {
         });
         diagfooterPanel.add(diagSaveBtn);
 
-        diadCancelBtn.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        diadCancelBtn.setText("Cancel");
-        diadCancelBtn.addActionListener(new java.awt.event.ActionListener() {
+        diagCancelBtn.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        diagCancelBtn.setText("Cancel");
+        diagCancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                diadCancelBtnActionPerformed(evt);
+                diagCancelBtnActionPerformed(evt);
             }
         });
-        diagfooterPanel.add(diadCancelBtn);
+        diagfooterPanel.add(diagCancelBtn);
 
         getContentPane().add(diagfooterPanel, java.awt.BorderLayout.PAGE_END);
 
@@ -389,17 +428,32 @@ public class AddCitizenDialog extends javax.swing.JDialog {
             String phone = phoneField.getText().trim();
             String name = nameField.getText().trim();
             
-            // Get gender
+            // Get gender - handle the case conversion properly
             String genderStr = (String) genderComboBox.getSelectedItem();
-            Gender gender = Gender.valueOf(genderStr.toUpperCase());
+            Gender gender;
             
+            // Map UI gender values to enum values
+            switch (genderStr) {
+                case "Male":
+                    gender = Gender.MALE;
+                    break;
+                case "Female":
+                    gender = Gender.FEMALE;
+                    break;
+                case "Other":
+                    gender = Gender.OTHER;
+                    break;
+                default:
+                    throw new IllegalArgumentException("Invalid gender selected");
+            }
             
             // Get location fields
             String province = (String) provinceComboBox.getSelectedItem();
             String district = (String) districtComboBox.getSelectedItem();
-            String municipality = municipalityField.getText();
-            String voteCenter = voteCenterField.getText();
+            String municipality = municipalityField.getText().trim();
+            String voteCenter = voteCenterField.getText().trim();
             
+            // Convert Date to LocalDate
             java.util.Date selectedDate = dobChooser.getDate();
             LocalDate dob = selectedDate.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
             
@@ -412,19 +466,30 @@ public class AddCitizenDialog extends javax.swing.JDialog {
             
             // If successful, close dialog
             if (successful) {
+                JOptionPane.showMessageDialog(this, 
+                    "Citizen registered successfully!", 
+                    "Success", 
+                    JOptionPane.INFORMATION_MESSAGE);
                 dispose();
             }
             
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, 
+                "Invalid input: " + e.getMessage(), 
+                "Validation Error", 
+                JOptionPane.ERROR_MESSAGE);
+            logger.warning("Validation error: " + e.getMessage());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, 
                 "Error adding citizen: " + e.getMessage(), 
                 "Error", 
                 JOptionPane.ERROR_MESSAGE);
+            logger.severe("Error adding citizen: " + e.getMessage());
             e.printStackTrace();
         }
     }//GEN-LAST:event_diagSaveBtnActionPerformed
 
-    private void diadCancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diadCancelBtnActionPerformed
+    private void diagCancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diagCancelBtnActionPerformed
         // TODO add your handling code here:
         // Ask for confirmation
         int confirm = JOptionPane.showConfirmDialog(
@@ -439,7 +504,7 @@ public class AddCitizenDialog extends javax.swing.JDialog {
             successful = false;
             dispose();
         }
-    }//GEN-LAST:event_diadCancelBtnActionPerformed
+    }//GEN-LAST:event_diagCancelBtnActionPerformed
 
     private void provinceComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provinceComboBoxActionPerformed
         // TODO add your handling code here:
@@ -451,7 +516,7 @@ public class AddCitizenDialog extends javax.swing.JDialog {
     private javax.swing.JLabel DOBLabel;
     private javax.swing.JTextField citizenshipField;
     private javax.swing.JLabel citizenshipLabel;
-    private javax.swing.JButton diadCancelBtn;
+    private javax.swing.JButton diagCancelBtn;
     private javax.swing.JPanel diagCenterPanel;
     private javax.swing.JLabel diagHeaderLabel;
     private javax.swing.JPanel diagHeaderPanel;

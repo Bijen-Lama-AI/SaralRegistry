@@ -2,7 +2,7 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -13,10 +13,10 @@ import java.util.List;
 public class CitizenRegistryModel {
     
     // Hashmap for quick access by citizenship number
-    private HashMap<String, CitizenModel> citizenMap;
+    private LinkedHashMap<String, CitizenModel> citizenMap;
     
     public CitizenRegistryModel() {
-        this.citizenMap = new HashMap<>();
+        this.citizenMap = new LinkedHashMap<>();
     }
     
     /**

@@ -45,7 +45,6 @@ public class MainFrame extends javax.swing.JFrame {
     private void loadInitialData() {
         try {
             citizenRegistry.addCitizen(new CitizenModel("5123574412", "9824370845", "Bijen Lama", Gender.MALE, "Bagmati", "Kathmandu", "KMC", "Swayambhu", LocalDate.of(2005, 5, 25)));
-            citizenRegistry.addCitizen(new CitizenModel("5123574425", "9824370845", "Bijen Lama", Gender.MALE, "Bagmati", "Kathmandu", "Kathmandu Metropolitan City", "Swayambhu", LocalDate.of(2005, 5, 25)));
             citizenRegistry.addCitizen(new CitizenModel("7348921567", "9841234987", "Sita Sharma", Gender.FEMALE, "Bagmati", "Lalitpur", "Lalitpur Metropolitan City", "Patan Durbar", LocalDate.of(1998, 3, 12)));
             citizenRegistry.addCitizen(new CitizenModel("3298745123", "9852345671", "Rajesh Gurung", Gender.MALE, "Gandaki", "Kaski", "Pokhara Metropolitan City", "Pokhara City Hall", LocalDate.of(1987, 7, 18)));
             citizenRegistry.addCitizen(new CitizenModel("6451238976", "9814567123", "Maya Tamang", Gender.FEMALE, "Bagmati", "Bhaktapur", "Bhaktapur Municipality", "Bhaktapur Square", LocalDate.of(1992, 11, 5)));
@@ -277,6 +276,7 @@ public class MainFrame extends javax.swing.JFrame {
         refreshCitizensTable();
         refreshDashboard();
         startCarousel();
+        sortTableInitial();
         
         CardLayout cl = (CardLayout) cardPanel.getLayout();
         cl.show(cardPanel, "loading");
@@ -379,23 +379,22 @@ public class MainFrame extends javax.swing.JFrame {
         sortChoiceBtn2 = new javax.swing.JRadioButton();
         sortBtn = new javax.swing.JButton();
         resetSortBtn = new javax.swing.JButton();
-        sortFooterPanel = new javax.swing.JPanel();
         sortCenterPanel = new javax.swing.JPanel();
         sortCenterPane = new javax.swing.JScrollPane();
         sortTable = new javax.swing.JTable();
         queuePane = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        queuePaneHeader = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        queueTextArea = new javax.swing.JTextArea();
         historyPane = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -618,7 +617,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         protectionImgLayout.setVerticalGroup(
             protectionImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 292, Short.MAX_VALUE)
+            .addGap(0, 303, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -745,7 +744,7 @@ public class MainFrame extends javax.swing.JFrame {
         adminHeaderCenter.setBackground(new java.awt.Color(255, 255, 255));
         adminHeaderCenter.setLayout(new java.awt.GridBagLayout());
 
-        carouselLabel.setFont(new java.awt.Font("SimSun", 1, 20)); // NOI18N
+        carouselLabel.setFont(new java.awt.Font("SimSun", 1, 36)); // NOI18N
         carouselLabel.setText("Loading.......");
         adminHeaderCenter.add(carouselLabel, new java.awt.GridBagConstraints());
 
@@ -918,7 +917,7 @@ public class MainFrame extends javax.swing.JFrame {
         searchHeader.add(searchField, gridBagConstraints);
 
         linearSearchBtn.setText("Linear Search");
-        linearSearchBtn.setPreferredSize(new java.awt.Dimension(100, 30));
+        linearSearchBtn.setPreferredSize(new java.awt.Dimension(150, 30));
         linearSearchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 linearSearchBtnActionPerformed(evt);
@@ -929,7 +928,7 @@ public class MainFrame extends javax.swing.JFrame {
         searchHeader.add(linearSearchBtn, gridBagConstraints);
 
         binarySearchBtn.setText("Binary Search");
-        binarySearchBtn.setPreferredSize(new java.awt.Dimension(101, 30));
+        binarySearchBtn.setPreferredSize(new java.awt.Dimension(150, 30));
         binarySearchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 binarySearchBtnActionPerformed(evt);
@@ -989,19 +988,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         sortPane.add(sortHeader, java.awt.BorderLayout.PAGE_START);
 
-        javax.swing.GroupLayout sortFooterPanelLayout = new javax.swing.GroupLayout(sortFooterPanel);
-        sortFooterPanel.setLayout(sortFooterPanelLayout);
-        sortFooterPanelLayout.setHorizontalGroup(
-            sortFooterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 947, Short.MAX_VALUE)
-        );
-        sortFooterPanelLayout.setVerticalGroup(
-            sortFooterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        sortPane.add(sortFooterPanel, java.awt.BorderLayout.PAGE_END);
-
         sortTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -1031,7 +1017,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         sortCenterPanelLayout.setVerticalGroup(
             sortCenterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sortCenterPane, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
+            .addComponent(sortCenterPane, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
         );
 
         sortPane.add(sortCenterPanel, java.awt.BorderLayout.CENTER);
@@ -1040,28 +1026,16 @@ public class MainFrame extends javax.swing.JFrame {
 
         queuePane.setLayout(new java.awt.BorderLayout());
 
-        jLabel3.setText("jLabel3");
+        queuePaneHeader.setLayout(new java.awt.GridLayout(1, 0));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(418, 418, 418)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(492, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel3)
-                .addContainerGap(64, Short.MAX_VALUE))
-        );
+        jLabel3.setFont(new java.awt.Font("Serif", 1, 36)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Approval Queue Management");
+        queuePaneHeader.add(jLabel3);
 
-        queuePane.add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        queuePane.add(queuePaneHeader, java.awt.BorderLayout.PAGE_START);
 
-        jPanel2.setLayout(new java.awt.GridBagLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 3, 10, 10));
 
         jButton1.setText("Process Next");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -1069,7 +1043,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new java.awt.GridBagConstraints());
+        jPanel2.add(jButton1);
 
         jButton2.setText("View Queue");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -1077,7 +1051,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new java.awt.GridBagConstraints());
+        jPanel2.add(jButton2);
 
         jButton3.setText("Refresh");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -1085,59 +1059,37 @@ public class MainFrame extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new java.awt.GridBagConstraints());
+        jPanel2.add(jButton3);
 
         queuePane.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
-        jLabel1.setText("Queue Size: 0");
-
-        jLabel2.setText("Processing: MANUAL");
+        queueTextArea.setEditable(false);
+        queueTextArea.setColumns(20);
+        queueTextArea.setRows(5);
+        jScrollPane2.setViewportView(queueTextArea);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 440, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(243, 243, 243))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 947, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addContainerGap(343, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
         );
 
         queuePane.add(jPanel3, java.awt.BorderLayout.CENTER);
 
-        adminDashboardPane.addTab("Queue", queuePane);
+        adminDashboardPane.addTab("Approval Queue", queuePane);
 
         historyPane.setLayout(new java.awt.BorderLayout());
 
-        jLabel4.setText("jLabel4");
+        jPanel4.setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(458, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(452, 452, 452))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel4)
-                .addContainerGap(55, Short.MAX_VALUE))
-        );
+        jLabel5.setFont(new java.awt.Font("Serif", 1, 36)); // NOI18N
+        jLabel5.setText("Action History");
+        jPanel4.add(jLabel5, new java.awt.GridBagConstraints());
 
         historyPane.add(jPanel4, java.awt.BorderLayout.PAGE_START);
 
@@ -1149,7 +1101,9 @@ public class MainFrame extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton4, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        jPanel5.add(jButton4, gridBagConstraints);
 
         jButton5.setText("View Stack");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -1157,7 +1111,9 @@ public class MainFrame extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton5, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        jPanel5.add(jButton5, gridBagConstraints);
 
         jButton6.setText("Clear");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -1165,7 +1121,9 @@ public class MainFrame extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton6, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        jPanel5.add(jButton6, gridBagConstraints);
 
         historyPane.add(jPanel5, java.awt.BorderLayout.PAGE_END);
 
@@ -1179,7 +1137,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
         );
 
         historyPane.add(jPanel6, java.awt.BorderLayout.CENTER);
@@ -1451,10 +1409,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        adminController.refreshQueue();
-        jLabel1.setText("Queue Size: " + adminController.getQueueSize());
-        refreshDashboard();
-        showMessage("Queue refreshed");
+    adminController.refreshQueue();
+    refreshDashboard();
+    showMessage("Queue refreshed successfully");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -1487,36 +1444,30 @@ public class MainFrame extends javax.swing.JFrame {
     
     private void handleEditCitizen() {
         try {
-            int row = citizensTable.getSelectedRow();
-            if(row < 0) {
-                showError("Please select a citizen to edit");
-                return;
-            }
-            
-            String cid = (String) citizensTable.getValueAt(row, 0);
-            CitizenModel citizen = citizenRegistry.findByCitizenshipNumber(cid);
-            
-            if (citizen == null) {
-                showError("Citizen not found");
-                return;
-            }
-            
-            String newPhone = JOptionPane.showInputDialog(this, "Enter new phone (10 digits):", citizen.getPhoneNumber());
-            
-            if (newPhone != null && !newPhone.trim().isEmpty()) {
-                if (!newPhone.matches("\\d{10}")) {
-                    showError("Phone must be 10 digits");
-                    return;
-                }
-                
-                boolean success = adminController.updateCitizen(citizen);
-                if (success) {
-                    refreshCitizensTable();
-                    refreshDashboard();
-                }
+        int row = citizensTable.getSelectedRow();
+        if (row < 0) {
+            showError("Please select a citizen to edit");
+            return;
+        }
+        
+        String cid = (String) citizensTable.getValueAt(row, 0);
+        CitizenModel citizen = citizenRegistry.findByCitizenshipNumber(cid);
+        
+        if (citizen == null) {
+            showError("Citizen not found");
+            return;
+        }
+        
+        // Create an edit dialog similar to AddCitizenDialog
+        EditCitizenDialog dialog = new EditCitizenDialog(this, true, citizenController, citizen);
+        dialog.setVisible(true);
+        
+        if (dialog.wasSuccessful()) {
+            refreshCitizensTable();
+            refreshDashboard();
             }
         } catch (Exception e) {
-            showError("Error editing" + e.getMessage());
+            showError("Error editing: " + e.getMessage());
         }
     }
     
@@ -1604,84 +1555,239 @@ public class MainFrame extends javax.swing.JFrame {
             return;
         }
         
+        // Check if search option is selected
+        if (!citizenshipNoBtn.isSelected() && !nameBtn.isSelected() && !phoneNumberBtn.isSelected()) {
+            showError("Please select a search option (Citizenship Number, Name, or Phone Number)");
+            return;
+        }
+        
         ArrayList<CitizenModel> all = new ArrayList<>(citizenRegistry.getAllCitizens());
         List<CitizenModel> results = new ArrayList<>();
         long start = System.currentTimeMillis();
         
         if (citizenshipNoBtn.isSelected()) {
+            // Partial match for citizenship number (string comparison)
+            // No need to validate if it's all digits - partial search should work with any input
             for (CitizenModel c : all) {
-                if (c.getCitizenshipNumber().equals(term)) {
+                // Convert both to string and check if citizenship contains the search term
+                String citizenship = c.getCitizenshipNumber();
+                if (citizenship.contains(term)) {
                     results.add(c);
-                    break;
                 }
             }
         } else if (nameBtn.isSelected()) {
+            // Partial match for name (case insensitive)
+            String searchTerm = term.toLowerCase();
             for (CitizenModel c : all) {
-                if (c.getVoterName().toLowerCase().contains(term.toLowerCase())) {
+                String name = c.getVoterName().toLowerCase();
+                if (name.contains(searchTerm)) {
                     results.add(c);
                 }
             }
         } else if (phoneNumberBtn.isSelected()) {
+            // Partial match for phone number (string comparison)
             for (CitizenModel c : all) {
-                if (c.getPhoneNumber().equals(term)) {
+                String phone = c.getPhoneNumber();
+                if (phone.contains(term)) {
                     results.add(c);
-                    break;
                 }
             }
         }
         
         long time = System.currentTimeMillis() - start;
-        displaySearchResults(results, "Linear Search", time);
+        displaySearchResults(results, "Linear Search (Partial Match)", time);
         
-        } catch (Exception e) {
-            showError("Search error: " + e.getMessage());
-        }
+    } catch (Exception e) {
+        showError("Search error: " + e.getMessage());
+        e.printStackTrace(); // This will help debug
+    }
     }
     
     private void handleBinarySearch() {
         try {
-        if (!citizenshipNoBtn.isSelected()) {
-            showError("Binary search only for ID");
-            return;
-        }
-        
         String term = searchField.getText().trim();
-        if (term.isEmpty() || !term.matches("\\d{9,10}")) {
-            showError("Enter valid citizenship number");
+        if (term.isEmpty()) {
+            showError("Enter search term");
             return;
         }
         
         ArrayList<CitizenModel> all = new ArrayList<>(citizenRegistry.getAllCitizens());
+        List<CitizenModel> results = new ArrayList<>();
         
         long sortStart = System.currentTimeMillis();
-        CitizenSorter.sortByCitizenshipNumber(all);
-        long sortTime = System.currentTimeMillis() - sortStart;
+        long sortTime = 0;
+        long searchStart = 0;
+        long searchTime = 0;
         
-        long searchStart = System.currentTimeMillis();
-        CitizenModel result = binarySearchById(all, term);
-        long searchTime = System.currentTimeMillis() - searchStart;
+        if (citizenshipNoBtn.isSelected()) {
+            // Sort by citizenship number
+            CitizenSorter.sortByCitizenshipNumber(all);
+            sortTime = System.currentTimeMillis() - sortStart;
+            
+            // Binary search
+            searchStart = System.currentTimeMillis();
+            CitizenModel result = binarySearchByCitizenshipNumber(all, term);
+            searchTime = System.currentTimeMillis() - searchStart;
+            
+            if (result != null) results.add(result);
+            
+        } else if (nameBtn.isSelected()) {
+            // Sort by name
+            sortByName(all);
+            sortTime = System.currentTimeMillis() - sortStart;
+            
+            // Binary search by name
+            searchStart = System.currentTimeMillis();
+            CitizenModel result = binarySearchByName(all, term);
+            searchTime = System.currentTimeMillis() - searchStart;
+            
+            if (result != null) results.add(result);
+            
+        } else if (phoneNumberBtn.isSelected()) {
+            // Sort by phone
+            sortByPhone(all);
+            sortTime = System.currentTimeMillis() - sortStart;
+            
+            // Binary search by phone
+            searchStart = System.currentTimeMillis();
+            CitizenModel result = binarySearchByPhone(all, term);
+            searchTime = System.currentTimeMillis() - searchStart;
+            
+            if (result != null) results.add(result);
+            
+        } else {
+            showError("Please select a search option");
+            return;
+        }
         
-        List<CitizenModel> results = new ArrayList<>();
-        if (result != null) results.add(result);
-        
-        String info = String.format("Binary Search\nSort: %dms | Search: %dms\n\n", sortTime, searchTime);
+        String info = String.format("Binary Search\nSort Time: %dms | Search Time: %dms\nTotal: %dms\n\n", 
+                                   sortTime, searchTime, sortTime + searchTime);
         displaySearchResults(results, info, sortTime + searchTime);
         
-        } catch (Exception e) {
-            showError("Search error: " + e.getMessage());
+    } catch (Exception e) {
+        showError("Search error: " + e.getMessage());
+    }
+    }
+    
+    private CitizenModel binarySearchByCitizenshipNumber(ArrayList<CitizenModel> citizens, String target) {
+        int left = 0, right = citizens.size() - 1;
+    
+    // Validate that target contains only digits for binary search
+    if (!target.matches("\\d+")) {
+        showError("For binary search by citizenship number, please enter only digits");
+        return null;
+    }
+    
+    // Pad target to match typical citizenship number length for comparison
+    String searchId = target.trim();
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        String midId = citizens.get(mid).getCitizenshipNumber();
+        
+        // Use string comparison for exact match
+        int comparison = midId.compareTo(searchId);
+        
+        if (comparison == 0) return citizens.get(mid);
+        if (comparison < 0) left = mid + 1;
+        else right = mid - 1;
+    }
+    return null;
+    }
+    
+    private CitizenModel binarySearchByName(ArrayList<CitizenModel> citizens, String target) {
+        int left = 0, right = citizens.size() - 1;
+    String searchName = target.toLowerCase();
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        String midName = citizens.get(mid).getVoterName().toLowerCase();
+        
+        int comparison = midName.compareTo(searchName);
+        
+        if (comparison == 0) return citizens.get(mid);
+        if (comparison < 0) left = mid + 1;
+        else right = mid - 1;
+    }
+    return null;
+    }
+    
+    private CitizenModel binarySearchByPhone(ArrayList<CitizenModel> citizens, String target) {
+        int left = 0, right = citizens.size() - 1;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        String midPhone = citizens.get(mid).getPhoneNumber();
+        
+        int comparison = midPhone.compareTo(target);
+        
+        if (comparison == 0) return citizens.get(mid);
+        if (comparison < 0) left = mid + 1;
+        else right = mid - 1;
+    }
+    return null;
+    }
+    
+    private void sortByName(ArrayList<CitizenModel> citizens) {
+        for (int i = 0; i < citizens.size() - 1; i++) {
+        int minIdx = i;
+        for (int j = i + 1; j < citizens.size(); j++) {
+            if (citizens.get(j).getVoterName().compareToIgnoreCase(
+                    citizens.get(minIdx).getVoterName()) < 0) {
+                minIdx = j;
+            }
+        }
+        CitizenModel temp = citizens.get(i);
+        citizens.set(i, citizens.get(minIdx));
+        citizens.set(minIdx, temp);
+    }
+    }
+    
+    private void sortByPhone(ArrayList<CitizenModel> citizens) {
+        int n = citizens.size();
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (citizens.get(j).getPhoneNumber().compareTo(
+                    citizens.get(j + 1).getPhoneNumber()) > 0) {
+                CitizenModel temp = citizens.get(j);
+                citizens.set(j, citizens.get(j + 1));
+                citizens.set(j + 1, temp);
+            }
         }
     }
+    }
+
     
     private void displaySearchResults(List<CitizenModel> results, String algo, long time) {
         StringBuilder sb = new StringBuilder();
-        sb.append(algo).append(" - ").append(time).append("ms\n");
-        sb.append("Found: ").append(results.size()).append("\n\n");
-        
-        for (CitizenModel c: results) {
-            sb.append(String.format("ID: %s\nName: %s\nAge: %d\nStatus: %s\n\n", c.getCitizenshipNumber(), c.getVoterName(), c.getAge(), c.getStatus().getDisplay()));
+    sb.append("═══════════════════════════════════════\n");
+    sb.append("  ").append(algo).append("\n");
+    sb.append("═══════════════════════════════════════\n");
+    sb.append("Time: ").append(time).append("ms\n");
+    sb.append("Results Found: ").append(results.size()).append("\n");
+    sb.append("═══════════════════════════════════════\n\n");
+    
+    if (results.isEmpty()) {
+        sb.append("No citizens found matching your search.\n");
+    } else {
+        int count = 1;
+        for (CitizenModel c : results) {
+            sb.append("Result #").append(count++).append("\n");
+            sb.append("─────────────────────────────────────\n");
+            sb.append(String.format("ID: %s\n", c.getCitizenshipNumber()));
+            sb.append(String.format("Name: %s\n", c.getVoterName()));
+            sb.append(String.format("Age: %d years\n", c.getAge()));
+            sb.append(String.format("Phone: %s\n", c.getPhoneNumber()));
+            sb.append(String.format("Gender: %s\n", c.getGender().getDisplay()));
+            sb.append(String.format("Province: %s\n", c.getProvince()));
+            sb.append(String.format("District: %s\n", c.getDistrict()));
+            sb.append(String.format("Status: %s\n", c.getStatus().getDisplay()));
+            sb.append("\n");
         }
-        
-        detailsTextarea.setText(sb.toString());
+    }
+    
+    detailsTextarea.setText(sb.toString());
+    detailsTextarea.setCaretPosition(0);
     }
     
     private void handleSort() {
@@ -1730,31 +1836,42 @@ public class MainFrame extends javax.swing.JFrame {
     
     private void handleProcessNext() {
         try {
-            CitizenModel next = adminController.processNextInQueue();
+        CitizenModel next = adminController.processNextInQueue();
         
         if (next == null) {
+            showMessage("Queue is empty");
             return;
         }
         
-        String msg = String.format("NEXT IN QUEUE\n\nName: %s\nID: %s\n\nWhat to do?",
-            next.getVoterName(), next.getCitizenshipNumber());
+        // Show in text area
+        StringBuilder sb = new StringBuilder();
+        sb.append("═══════════ NEXT IN QUEUE ═══════════\n\n");
+        sb.append(String.format("Name: %s\n", next.getVoterName()));
+        sb.append(String.format("ID: %s\n", next.getCitizenshipNumber()));
+        sb.append(String.format("Age: %d\n", next.getAge()));
+        sb.append(String.format("Phone: %s\n", next.getPhoneNumber()));
+        sb.append(String.format("Province: %s\n", next.getProvince()));
+        sb.append("\n═══════════════════════════════════\n");
+        queueTextArea.setText(sb.toString());
         
         String[] options = {"Approve", "Reject", "Skip", "Cancel"};
-        int choice = JOptionPane.showOptionDialog(this, msg, "Process",
-            JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
+        int choice = JOptionPane.showOptionDialog(this, 
+            "What action would you like to take?", 
+            "Process Citizen",
+            JOptionPane.DEFAULT_OPTION, 
+            JOptionPane.QUESTION_MESSAGE,
             null, options, options[0]);
             
         if (choice == 0) {
             adminController.approveCitizen(next.getCitizenshipNumber());
-            refreshCitizensTable();
-            refreshDashboard();
+            queueTextArea.append("\n✓ APPROVED");
         } else if (choice == 1) {
-            adminController.rejectCitizen(next.getCitizenshipNumber(), "Rejected");
-            refreshCitizensTable();
-            refreshDashboard();
+            adminController.rejectCitizen(next.getCitizenshipNumber(), "Rejected by admin");
+            queueTextArea.append("\n✗ REJECTED");
         }
         
-        jLabel1.setText("Queue Size: " + adminController.getQueueSize());
+        refreshCitizensTable();
+        refreshDashboard();
         
         } catch (Exception e) {
             showError("Error: " + e.getMessage());
@@ -1766,37 +1883,90 @@ public class MainFrame extends javax.swing.JFrame {
         LinkedList<CitizenModel> queue = adminController.getPendingQueue();
         
         if (queue.isEmpty()) {
-            showMessage("Queue is empty");
+            queueTextArea.setText("═══════════════════════════════════\n" +
+                                 "      QUEUE IS EMPTY\n" +
+                                 "═══════════════════════════════════");
             return;
         }
         
         StringBuilder sb = new StringBuilder();
-        sb.append("PENDING QUEUE (FIFO)\n");
-        sb.append("Size: ").append(queue.size()).append("\n\n");
+        sb.append("═══════════ APPROVAL QUEUE (FIFO) ═══════════\n\n");
+        sb.append(String.format("Total in Queue: %d\n\n", queue.size()));
+        sb.append("Position | Name              | ID          | Age\n");
+        sb.append("─────────────────────────────────────────────────\n");
         
         int pos = 1;
         for (CitizenModel c : queue) {
-            sb.append(String.format("%d. %s (%s)\n", pos++, c.getVoterName(), c.getCitizenshipNumber()));
+            sb.append(String.format("%-8d | %-17s | %-11s | %d\n", 
+                pos++, 
+                truncate(c.getVoterName(), 17),
+                c.getCitizenshipNumber(),
+                c.getAge()));
         }
         
-        JTextArea area = new JTextArea(sb.toString());
-        area.setEditable(false);
-        JOptionPane.showMessageDialog(this, new JScrollPane(area), "Queue", JOptionPane.INFORMATION_MESSAGE);
+        queueTextArea.setText(sb.toString());
+        queueTextArea.setCaretPosition(0);
         
         } catch (Exception e) {
             showError("Error: " + e.getMessage());
         }
     }
+
+    private String truncate(String str, int length) {
+        return str.length() > length ? str.substring(0, length - 3) + "..." : str;
+    }
     
     private void handleUndo() {
         try {
+        // Check if history is empty first
+        if (adminController.getActionHistory().isEmpty()) {
+            showMessage("No actions to undo.");
+            return;
+        }
+        
+        // Get the last action to show in confirmation
+        Stack<ActionHistory> history = adminController.getActionHistory();
+        ActionHistory lastAction = history.peek(); // Just peek, don't pop yet
+        
+        // Create detailed confirmation message
+        String message = String.format(
+            "Are you sure you want to undo this action?\n\n" +
+            "Action Type: %s\n" +
+            "Citizen: %s\n" +
+            "Citizenship No: %s\n" +
+            "Admin: %s\n" +
+            "Time: %s",
+            lastAction.getActionType(),
+            lastAction.getCitizenSnapshot().getVoterName(),
+            lastAction.getCitizenSnapshot().getCitizenshipNumber(),
+            lastAction.getAdminId(),
+            lastAction.getTimestamp().toString()
+        );
+        
+        // Show confirmation dialog with YES/NO options
+        int confirm = JOptionPane.showConfirmDialog(
+            this,
+            message,
+            "Confirm Undo Action",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+        );
+        
+        // Only proceed if YES was clicked
+        if (confirm == JOptionPane.YES_OPTION) {
             boolean success = adminController.undoLastAction();
             
             if (success) {
                 refreshCitizensTable();
                 refreshDashboard();
                 refreshHistoryList();
+                showMessage("Action undone successfully!");
             }
+        } else {
+            // User clicked NO or closed the dialog
+            showMessage("Undo cancelled.");
+        }
+        
         } catch (Exception e) {
             showError("Error: " + e.getMessage());
         }
@@ -1819,6 +1989,39 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     jList1.setModel(model);
+    }
+    
+    private void loadUnsortedDataToSortTable() {
+        try {
+        DefaultTableModel model = (DefaultTableModel) sortTable.getModel();
+        model.setRowCount(0);
+        
+        ArrayList<CitizenModel> citizens = new ArrayList<>(citizenRegistry.getAllCitizens());
+        
+        for (CitizenModel c : citizens) {
+            model.addRow(new Object[]{
+                c.getCitizenshipNumber(),
+                c.getVoterName(),
+                c.getAge(),
+                c.getPhoneNumber(),
+                c.getProvince(),
+                c.getStatus().getDisplay()
+            });
+        }
+        } catch (Exception e) {
+            showError("Error loading data: " + e.getMessage());
+        }
+    }
+    
+    private void sortTableInitial() {
+        adminDashboardPane.addChangeListener(e -> {
+            int selectedIndex = adminDashboardPane.getSelectedIndex();
+            String tabTitle = adminDashboardPane.getTitleAt(selectedIndex);
+            
+            if ("Sort".equals(tabTitle)) {
+                loadUnsortedDataToSortTable();
+            }
+        });
     }
     /**
      * @param args the command line arguments
@@ -1952,18 +2155,16 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton linearSearchBtn;
     private javax.swing.JProgressBar loadingBar;
     private javax.swing.JLabel loadingLabel;
@@ -1980,6 +2181,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton phoneNumberBtn;
     private view.BackgroundPanel protectionImg;
     private javax.swing.JPanel queuePane;
+    private javax.swing.JPanel queuePaneHeader;
+    private javax.swing.JTextArea queueTextArea;
     private javax.swing.JLabel quoteLabel;
     private javax.swing.JButton refreshManageBtn;
     private javax.swing.JButton rejectBtn;
@@ -1997,7 +2200,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton sortChoiceBtn1;
     private javax.swing.JRadioButton sortChoiceBtn2;
     private javax.swing.ButtonGroup sortChoiceGroup;
-    private javax.swing.JPanel sortFooterPanel;
     private javax.swing.JPanel sortHeader;
     private javax.swing.JPanel sortPane;
     private javax.swing.ButtonGroup sortSelectionGroup;

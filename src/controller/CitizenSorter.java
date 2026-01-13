@@ -17,14 +17,14 @@ public class CitizenSorter {
     public static void sortByCitizenshipNumber(ArrayList<CitizenModel> citizens) {
         for (int i = 1; i < citizens.size(); i++) {
             CitizenModel key = citizens.get(i);
-            long keyNumber = Long.parseLong(key.getCitizenshipNumber());
+            String keyNumber = key.getCitizenshipNumber();
             int j = i -1;
             
-            while (j >= 0 && Long.parseLong(citizens.get(j).getCitizenshipNumber()) > keyNumber) {
+            while (j >= 0 && citizens.get(j).getCitizenshipNumber().compareTo(keyNumber) > 0) {
                 citizens.set(j + 1, citizens.get(j));
                 j--;
             }
-            citizens.set(j+1, key);
+            citizens.set(j + 1, key);
         }
     }
     
