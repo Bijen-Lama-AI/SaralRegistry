@@ -92,11 +92,11 @@ public class CitizenModel {
             String municipality, String voteCenter, LocalDate dateOfBirth) {
         
         validateString(citizenshipNumber, "Citizenship number", "\\d+");
-        validateString(voterName, "Voter name", "[a-zA-Z ]+");
-        validateString(province, "Province", "[a-zA-Z0-9-']+");
-        validateString(district, "District", "[a-zA-Z0-9-']+");
-        validateString(municipality, "Municipality", "[a-zA-Z0-9-']+");
-        validateString(voteCenter, "Vote center", "[a-zA-Z0-9-']+");
+        validateString(voterName, "Voter name", "[a-zA-Z .'-]+");
+        validateString(province, "Province", "[a-zA-Z0-9-' ]+");
+        validateString(district, "District", "[a-zA-Z0-9-' ]+");
+        validateString(municipality, "Municipality", "[a-zA-Z0-9-' ]+");
+        validateString(voteCenter, "Vote center", "[a-zA-Z0-9-' ]+");
         
         if (citizenshipNumber == null || citizenshipNumber.trim().isEmpty()) {
             throw new IllegalArgumentException("Citizenship number cannot be null or empty.");
