@@ -25,6 +25,8 @@ public class CitizenController {
 
     /**
      * Constructor
+     * @param citizenRegistry
+     * @param view
      */
     public CitizenController(CitizenRegistryModel citizenRegistry, MainFrame view) {
         this.citizenRegistry = citizenRegistry;
@@ -33,6 +35,16 @@ public class CitizenController {
 
     /**
      * Adds a new citizen from UI input with comprehensive validation.
+     * @param citizenshipNumber
+     * @param phoneNumber
+     * @param voterName
+     * @param gender
+     * @param province
+     * @param district
+     * @param municipality
+     * @param voteCenter
+     * @param dob
+     * @return 
      */
     public boolean addCitizenFromUI(String citizenshipNumber, String phoneNumber, String voterName,
             Gender gender, String province, String district,
@@ -52,11 +64,7 @@ public class CitizenController {
 
             // Step 3: Create citizen object
             CitizenModel citizen = new CitizenModel(
-                    citizenshipNumber.trim(),
-                    phoneNumber.trim(),
-                    voterName.trim(),
-                    gender,
-                    province.trim(),
+                    citizenshipNumber.trim(), phoneNumber.trim(),voterName.trim(),gender,province.trim(),
                     district.trim(),
                     municipality.trim(),
                     voteCenter.trim(),
@@ -395,6 +403,11 @@ public class CitizenController {
                 return false;
             }
 
+            if (citizen.getStatus() == CitizenModel.RegistrationStatus.REJECTED) {
+                view.showError("Cannot edit rejected records. Please contact admin or submit a new application.");
+                return false;
+            }
+
             // Validate all inputs
             if (!validateInputs(citizenshipNumber, phone, name, gender, province,
                     district, municipality, voteCenter, dob)) {
@@ -443,6 +456,11 @@ public class CitizenController {
             // Check if deletion is allowed
             if (citizen.getStatus() == CitizenModel.RegistrationStatus.APPROVED) {
                 view.showError("Cannot delete approved records. Please contact admin.");
+                return false;
+            }
+
+            if (citizen.getStatus() == CitizenModel.RegistrationStatus.REJECTED) {
+                view.showError("Cannot delete rejected records. Please contact admin.");
                 return false;
             }
 
@@ -518,6 +536,10 @@ public class CitizenController {
             if (citizen.getStatus() == CitizenModel.RegistrationStatus.APPROVED) {
                 view.showError("Cannot edit approved records. Please contact admin.");
                 return false;
+            }
+
+            if (citizen.getStatus() == CitizenModel.RegistrationStatus.REJECTED) {
+                view.showError("Cannot edit rejected records. Please contact admin.");
             }
 
             // Validate new citizenship number

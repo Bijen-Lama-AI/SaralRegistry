@@ -37,6 +37,9 @@ public class AdminController {
 
     /**
      * Constructor for AdminController
+     * @param adminRegistry
+     * @param citizenRegistry
+     * @param view
      */
     public AdminController(AdminRegistryModel adminRegistry, CitizenRegistryModel citizenRegistry, MainFrame view) {
         this.adminRegistry = adminRegistry;
@@ -50,7 +53,6 @@ public class AdminController {
         loadInitialAdmins();
     }
 
-    // ==================== AUTHENTICATION ====================
     /**
      * Authenticate admin credentials.
      */
@@ -206,7 +208,6 @@ public class AdminController {
         }
     }
 
-    // ==================== CITIZEN MANAGEMENT ====================
     /**
      * Add a new citizen to registry
      */
@@ -307,6 +308,8 @@ public class AdminController {
 
     /**
      * Update citizen information
+     * @param citizen
+     * @return 
      */
     public boolean updateCitizen(CitizenModel citizen) {
         if (!ensureLoggedIn()) {
@@ -338,6 +341,8 @@ public class AdminController {
 
     /**
      * Delete citizen from registry
+     * @param citizenshipNumber
+     * @return 
      */
     public boolean deleteCitizen(String citizenshipNumber) {
         if (!ensureLoggedIn()) {
@@ -380,9 +385,10 @@ public class AdminController {
         }
     }
 
-    // ==================== APPROVAL SYSTEM ====================
     /**
      * Approve a citizen's registration
+     * @param citizenshipNumber
+     * @return 
      */
     public boolean approveCitizen(String citizenshipNumber) {
         if (!ensureLoggedIn()) {
@@ -430,6 +436,9 @@ public class AdminController {
 
     /**
      * Reject a citizen's registration
+     * @param citizenshipNumber
+     * @param reason
+     * @return 
      */
     public boolean rejectCitizen(String citizenshipNumber, String reason) {
         if (!ensureLoggedIn()) {
@@ -475,9 +484,9 @@ public class AdminController {
         }
     }
 
-    // ==================== QUEUE MANAGEMENT ====================
     /**
      * Process next citizen in queue (approve/reject)
+     * @return 
      */
     public CitizenModel processNextInQueue() {
         if (!ensureLoggedIn()) {
@@ -500,6 +509,7 @@ public class AdminController {
 
     /**
      * Get pending queue
+     * @return 
      */
     public LinkedList<CitizenModel> getPendingQueue() {
         return new LinkedList<>(pendingQueue);
@@ -531,7 +541,6 @@ public class AdminController {
         loadPendingQueue();
     }
 
-    // ==================== HISTORY/UNDO SYSTEM ====================
     /**
      * Record an action in history
      */
@@ -544,6 +553,7 @@ public class AdminController {
 
     /**
      * Get action history
+     * @return 
      */
     public Stack<ActionHistory> getActionHistory() {
         return new Stack<ActionHistory>() {
@@ -555,6 +565,7 @@ public class AdminController {
 
     /**
      * Get history size
+     * @return 
      */
     public int getHistorySize() {
         return actionStack.size();
@@ -574,6 +585,7 @@ public class AdminController {
 
     /**
      * Undo last action
+     * @return 
      */
     public boolean undoLastAction() {
         if (!ensureLoggedIn()) {
@@ -634,9 +646,10 @@ public class AdminController {
         }
     }
 
-    // ==================== STATISTICS ====================
     /**
      * Get count by status
+     * @param status
+     * @return 
      */
     public int countByStatus(RegistrationStatus status) {
         int count = 0;
@@ -751,7 +764,6 @@ public class AdminController {
         return citizenRegistry.count();
     }
 
-    // ==================== HELPER METHODS ====================
     /**
      * Ensures that admin is logged in before performing action
      */

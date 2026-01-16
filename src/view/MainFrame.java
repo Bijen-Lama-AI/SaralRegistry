@@ -50,11 +50,11 @@ public class MainFrame extends javax.swing.JFrame {
             citizenRegistry.addCitizen(new CitizenModel("3298745123", "9852345671", "Rajesh Gurung", Gender.MALE, "Gandaki", "Kaski", "Pokhara Metropolitan City", "Pokhara City Hall", LocalDate.of(1987, 7, 18)));
             citizenRegistry.addCitizen(new CitizenModel("6451238976", "9814567123", "Maya Tamang", Gender.FEMALE, "Bagmati", "Bhaktapur", "Bhaktapur Municipality", "Bhaktapur Square", LocalDate.of(1992, 11, 5)));
             citizenRegistry.addCitizen(new CitizenModel("8912345678", "9825678234", "Krishna Shrestha", Gender.MALE, "Bagmati", "Kathmandu", "Kirtipur Municipality", "Kirtipur Hall", LocalDate.of(1978, 2, 28)));
-            citizenRegistry.addCitizen(new CitizenModel("4123567890", "9836789345", "Bimala Rai", Gender.FEMALE, "Province 1", "Jhapa", "Birtamod Municipality", "Birtamod Center", LocalDate.of(1985, 9, 15)));
+            citizenRegistry.addCitizen(new CitizenModel("4123567890", "9836789345", "Bimala Rai", Gender.FEMALE, "Koshi", "Jhapa", "Birtamod Municipality", "Birtamod Center", LocalDate.of(1985, 9, 15)));
             citizenRegistry.addCitizen(new CitizenModel("6789123456", "9847890456", "Rajendra Yadav", Gender.MALE, "Madhesh", "Sarlahi", "Malangwa Municipality", "Malangwa School", LocalDate.of(1990, 4, 22)));
             citizenRegistry.addCitizen(new CitizenModel("9234567812", "9858901567", "Sunita Magar", Gender.FEMALE, "Gandaki", "Syangja", "Putalibazar Municipality", "Syangja Office", LocalDate.of(1983, 8, 30)));
             citizenRegistry.addCitizen(new CitizenModel("1567892345", "9869012678", "Mohan Basnet", Gender.MALE, "Koshi", "Sunsari", "Dharan Sub-metropolitan", "Dharan Civic Center", LocalDate.of(1975, 12, 10)));
-            citizenRegistry.addCitizen(new CitizenModel("7891234560", "9870123789", "Gita Limbu", Gender.FEMALE, "Province 1", "Ilam", "Ilam Municipality", "Ilam Tea Garden", LocalDate.of(2000, 6, 8)));
+            citizenRegistry.addCitizen(new CitizenModel("7891234560", "9870123789", "Gita Limbu", Gender.FEMALE, "Koshi", "Ilam", "Ilam Municipality", "Ilam Tea Garden", LocalDate.of(2000, 6, 8)));
             citizenRegistry.addCitizen(new CitizenModel("2345678910", "9881234890", "Kumar Lama", Gender.MALE, "Bagmati", "Nuwakot", "Bidur Municipality", "Nuwakot Office", LocalDate.of(1965, 1, 14)));
             citizenRegistry.addCitizen(new CitizenModel("5678901234", "9892345901", "Sabina Karki", Gender.FEMALE, "Gandaki", "Tanahun", "Damauli Municipality", "Tanahun Hall", LocalDate.of(1995, 10, 3)));
             citizenRegistry.addCitizen(new CitizenModel("8901234567", "9803456012", "Bikash Chhetri", Gender.MALE, "Lumbini", "Rupandehi", "Butwal Sub-metropolitan", "Butwal Center", LocalDate.of(1988, 7, 19)));
@@ -76,7 +76,7 @@ public class MainFrame extends javax.swing.JFrame {
             citizenRegistry.addCitizen(new CitizenModel("6789012346", "9869012678", "Buddhi Man Tamrakar", Gender.MALE, "Bagmati", "Kathmandu", "Tokha Municipality", "Tokha City Hall", LocalDate.of(1970, 9, 2)));
             citizenRegistry.addCitizen(new CitizenModel("9012345679", "9870123789", "Kamala Siwakoti", Gender.FEMALE, "Bagmati", "Kavrepalanchok", "Dhulikhel Municipality", "Dhulikhel Hospital", LocalDate.of(1996, 4, 19)));
             citizenRegistry.addCitizen(new CitizenModel("2345678902", "9881234890", "Nabin K.C.", Gender.MALE, "Gandaki", "Manang", "Chame Rural Municipality", "Manang Office", LocalDate.of(1981, 12, 24)));
-            citizenRegistry.addCitizen(new CitizenModel("5678901236", "9892345901", "Goma Ale", Gender.FEMALE, "Province 1", "Morang", "Biratnagar Metropolitan", "Biratnagar Stadium", LocalDate.of(2001, 8, 7)));
+            citizenRegistry.addCitizen(new CitizenModel("5678901236", "9892345901", "Goma Ale", Gender.FEMALE, "Koshi", "Morang", "Biratnagar Metropolitan", "Biratnagar Stadium", LocalDate.of(2001, 8, 7)));
             citizenRegistry.addCitizen(new CitizenModel("8901234569", "9803456012", "Ram Prasad Sharma", Gender.MALE, "Lumbini", "Kapilvastu", "Kapilvastu Municipality", "Lumbini Center", LocalDate.of(1968, 2, 13)));
             citizenRegistry.addCitizen(new CitizenModel("1234567892", "9814567123", "Sujata Khatri", Gender.FEMALE, "Bagmati", "Sindhuli", "Kamalamai Municipality", "Sindhuli Office", LocalDate.of(1997, 10, 21)));
             citizenRegistry.addCitizen(new CitizenModel("4567890125", "9825678234", "Harka Sampang", Gender.MALE, "Karnali", "Humla", "Simkot Rural Municipality", "Humla District Center", LocalDate.of(1983, 5, 4)));
@@ -84,7 +84,7 @@ public class MainFrame extends javax.swing.JFrame {
             citizenRegistry.addCitizen(new CitizenModel("0123456791", "9847890456", "Jitendra Thakur", Gender.MALE, "Madhesh", "Saptari", "Rajbiraj Municipality", "Saptari Hall", LocalDate.of(1990, 7, 15)));
             citizenRegistry.addCitizen(new CitizenModel("3456789014", "9858901567", "Kabita Mandal", Gender.FEMALE, "Madhesh", "Rautahat", "Gaur Municipality", "Rautahat Center", LocalDate.of(1995, 12, 3)));
             citizenRegistry.addCitizen(new CitizenModel("6789012347", "9869012678", "Shyam Kumar Ojha", Gender.MALE, "Sudurpashchim", "Dadeldhura", "Amargadhi Municipality", "Dadeldhura Office", LocalDate.of(1963, 9, 26)));
-            citizenRegistry.addCitizen(new CitizenModel("9012345680", "9870123789", "Rina Devi", Gender.FEMALE, "Province 1", "Udayapur", "Triyuga Municipality", "Udayapur Center", LocalDate.of(1988, 3, 14)));
+            citizenRegistry.addCitizen(new CitizenModel("9012345680", "9870123789", "Rina Devi", Gender.FEMALE, "Koshi", "Udayapur", "Triyuga Municipality", "Udayapur Center", LocalDate.of(1988, 3, 14)));
             citizenRegistry.addCitizen(new CitizenModel("2345678903", "9881234890", "Dhan Bahadur Ghale", Gender.MALE, "Bagmati", "Rasuwa", "Dhunche Municipality", "Rasuwa Office", LocalDate.of(1974, 11, 8)));
             citizenRegistry.addCitizen(new CitizenModel("5678901237", "9892345901", "Anita Bhujel", Gender.FEMALE, "Bagmati", "Sindhupalchok", "Chautara Municipality", "Sindhupalchok Hall", LocalDate.of(2004, 6, 30)));
             citizenRegistry.addCitizen(new CitizenModel("8901234570", "9803456012", "Keshav Prasad Neupane", Gender.MALE, "Lumbini", "Arghakhanchi", "Sandhikharka Municipality", "Arghakhanchi Center", LocalDate.of(1958, 4, 17)));
@@ -287,6 +287,14 @@ public class MainFrame extends javax.swing.JFrame {
         startCarousel();
         sortTableInitial();
         setupCitizenRegComboBoxes();
+
+        citizensTable.setRowHeight(25);
+        citizensTable.getTableHeader().setReorderingAllowed(false);
+        citizensTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        sortTable.setRowHeight(25);
+        sortTable.getTableHeader().setReorderingAllowed(false);
+        sortTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         CardLayout cl = (CardLayout) cardPanel.getLayout();
         cl.show(cardPanel, "loading");
@@ -539,6 +547,7 @@ public class MainFrame extends javax.swing.JFrame {
         loadingBar.setMinimumSize(new java.awt.Dimension(200, 10));
         loadingBar.setName(""); // NOI18N
         loadingBar.setPreferredSize(new java.awt.Dimension(200, 10));
+        loadingBar.setStringPainted(true);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -1346,6 +1355,7 @@ public class MainFrame extends javax.swing.JFrame {
         citizenWelcomePanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
         CitizenDashboardPanel.add(citizenWelcomePanel, java.awt.BorderLayout.LINE_START);
 
+        citizenLogoutPanel.setBackground(new java.awt.Color(52, 152, 219));
         citizenLogoutPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         citizenLogoutBtn.setBackground(new java.awt.Color(231, 76, 60));
@@ -1369,7 +1379,8 @@ public class MainFrame extends javax.swing.JFrame {
         registrationHeaderPanel.setBackground(new java.awt.Color(255, 255, 255));
         registrationHeaderPanel.setLayout(new java.awt.GridBagLayout());
 
-        registrationTitleLabel.setFont(new java.awt.Font("SimSun", 1, 28)); // NOI18N
+        registrationTitleLabel.setFont(new java.awt.Font("SimSun", 1, 32)); // NOI18N
+        registrationTitleLabel.setForeground(new java.awt.Color(41, 128, 185));
         registrationTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         registrationTitleLabel.setText("🆕 New Voter Registration");
         registrationHeaderPanel.add(registrationTitleLabel, new java.awt.GridBagConstraints());
@@ -1514,8 +1525,8 @@ public class MainFrame extends javax.swing.JFrame {
         statusCidField.setPreferredSize(new java.awt.Dimension(200, 35));
         statusInputPanel.add(statusCidField);
 
-        checkStatusBtn.setBackground(new java.awt.Color(52, 152, 219));
-        checkStatusBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        checkStatusBtn.setBackground(new java.awt.Color(46, 204, 113));
+        checkStatusBtn.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         checkStatusBtn.setForeground(new java.awt.Color(255, 255, 255));
         checkStatusBtn.setText("Check Status");
         checkStatusBtn.setPreferredSize(new java.awt.Dimension(150, 35));
@@ -1533,7 +1544,7 @@ public class MainFrame extends javax.swing.JFrame {
         statusResultPanel.setLayout(new java.awt.GridBagLayout());
 
         statusCardPanel.setBackground(new java.awt.Color(255, 255, 255));
-        statusCardPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 152, 219), 2));
+        statusCardPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 152, 219), 3));
         statusCardPanel.setPreferredSize(new java.awt.Dimension(500, 500));
         statusCardPanel.setLayout(new java.awt.GridLayout(10, 1, 10, 15));
 
@@ -1580,6 +1591,9 @@ public class MainFrame extends javax.swing.JFrame {
         searchCidField.setPreferredSize(new java.awt.Dimension(150, 30));
         editSearchPanel.add(searchCidField);
 
+        searchMyRecordButton.setBackground(new java.awt.Color(52, 152, 219));
+        searchMyRecordButton.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        searchMyRecordButton.setForeground(new java.awt.Color(255, 255, 255));
         searchMyRecordButton.setText("Find Record");
         searchMyRecordButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2457,23 +2471,25 @@ public class MainFrame extends javax.swing.JFrame {
         municipalityEditField.setText(citizen.getMunicipality());
         voteCenterEditField.setText(citizen.getVoteCenter());
 
-        // Display status with color
+        // Enhanced status display with better formatting
         String status = citizen.getStatus().getDisplay();
-        statusEditDisplay.setText(status);
+        statusEditDisplay.setText("● " + status); // Add bullet point
+        statusEditDisplay.setFont(new Font("Segoe UI", Font.BOLD, 16)); // Bigger font
 
         switch (citizen.getStatus()) {
             case PENDING:
-                statusEditDisplay.setForeground(new Color(255, 165, 0));
+                statusEditDisplay.setForeground(new Color(255, 165, 0)); // Orange
                 break;
             case APPROVED:
-                statusEditDisplay.setForeground(new Color(40, 167, 69));
+                statusEditDisplay.setForeground(new Color(40, 167, 69)); // Green
                 break;
             case REJECTED:
-                statusEditDisplay.setForeground(new Color(220, 53, 69));
+                statusEditDisplay.setForeground(new Color(220, 53, 69)); // Red
                 break;
         }
 
         setFormEnabled(true);
+
     }
 
     private void checkEditPermission(CitizenModel citizen) {
@@ -2485,6 +2501,12 @@ public class MainFrame extends javax.swing.JFrame {
                     "Your record is APPROVED and cannot be edited.\nPlease contact admin for changes.",
                     "Edit Restricted",
                     JOptionPane.INFORMATION_MESSAGE);
+        } else if (citizen.getStatus() == RegistrationStatus.REJECTED) {
+            setFormEnabled(false);
+            saveEditBtn.setEnabled(false);
+            deleteMyRecordBtn.setEnabled(false);
+            JOptionPane.showMessageDialog(this, "Your record is REJECTED and cannot be edited. \nPlease contact admin or submit a new application.",
+                    "Edit Restricted - Rejected", JOptionPane.WARNING_MESSAGE);
         } else {
             setFormEnabled(true);
             saveEditBtn.setEnabled(true);
@@ -2845,7 +2867,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
 
             // Create an edit dialog similar to AddCitizenDialog
-            EditCitizenDialog dialog = new EditCitizenDialog(this, true, citizenController, citizen);
+            EditCitizenDialog dialog = new EditCitizenDialog(this, true, adminController, citizenController, citizen);
             dialog.setVisible(true);
 
             if (dialog.wasSuccessful()) {
@@ -3779,7 +3801,7 @@ public class MainFrame extends javax.swing.JFrame {
             new Thread(() -> {
                 try {
                     for (int i = 0; i <= 100; i++) {
-                        Thread.sleep(20); // Adjust speed here (lower = faster)
+                        Thread.sleep(20);
 
                         final int progress = i;
                         String message;
@@ -3819,6 +3841,7 @@ public class MainFrame extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) cardPanel.getLayout();
         cl.show(cardPanel, "mainContent");
     }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
